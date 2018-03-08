@@ -13,6 +13,7 @@ const admin = require('./controller/crud-places')
 const vehicle=require('./controller/crud-vehicle')
 const driver=require('./controller/crud-drivers')
 const manager=require('./controller/crud-final')
+const search=require('./controller/search')
 
 const loe=require('./controller/loe')
 const logout = require('./controller/logout')
@@ -47,7 +48,7 @@ app.use('/places',admin)
 app.use('/vehicles',vehicle)
 app.use('/drivers',driver)
 app.use('/assign',manager)
-//app.use('/places',manager)
+app.use('/search',search)
 
 
 

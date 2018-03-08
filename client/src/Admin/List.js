@@ -9,6 +9,7 @@ class List extends Component {
         super(props)
         this.state = {
             from: '',
+            data:[]
            
         }
         this.handleFrom = this.handleFrom.bind(this)
@@ -34,7 +35,28 @@ class List extends Component {
 
                     </select>
                     <br/>
-                    
+                
+                    <table >
+                        <tbody>{this.state.data.map(function(item,key){
+                            return(
+                                <tr key={key}>
+                                    <th >from</th>
+                                    <th>to</th>
+                                    <th>route1</th>
+                                    <th>route2</th>
+                                    <th>time</th>
+                                
+                                    <td >{item.from}</td>
+                                    <td >{item.to}</td>
+                                    <td >{item.route1}</td>
+                                    <td >{item.route2}</td>
+                                    <td >{item.time}</td>
+                                </tr>
+                            )
+                         })} </tbody>
+
+
+                    </table>
                     <br/>
                     <button type="button" onClick={this.handleSubmit}>Submit</button>
                 </form>
@@ -57,9 +79,10 @@ class List extends Component {
             },
             withCredentials: true
         })
-            .then(() => {
+            .then((res) => {
                 this.setState({
-                    from: ''
+                    from: '',
+                    data:res.data
                     
                 })
                 alert('details added')

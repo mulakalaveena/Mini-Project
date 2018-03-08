@@ -3,7 +3,7 @@ import axios from 'axios'
 import './App.css';
 import Admin from './Admin/Homepage'
 import Manager from './Manager/Homepage'
-import Driver from './Driver/Homepage'
+import Status from './Driver/Status'
 import User from './User.js'
 
 class Login extends Component {
@@ -53,7 +53,7 @@ class Login extends Component {
                 {this.state.loginPage ? loginPage : null}
                 {this.state.adminPage?<Admin/>:null}
                 {this.state.managerPage?<Manager/>:null}
-                {this.state.driverPage?<Driver/>:null}
+                {this.state.driverPage?<Status/>:null}
                 {this.state.userPage?<User/>:null}
                 
             </div>
@@ -74,13 +74,13 @@ class Login extends Component {
             </div>
         )
     }
-    // driverPage(){
-    //     return(
-    //         <div>
-    //             <Driver/>
-    //         </div>
-    //     )
-    // }
+    driverPage(){
+        return(
+            <div>
+                <Status/>
+            </div>
+        )
+    }
     userPage(){
         return(
             <div>
@@ -128,7 +128,7 @@ class Login extends Component {
                         loginPage: !this.state.loginPage,
                         adminPage: this.state.adminPage,
                         managerPage:this.state.managerPage,
-                        //driverPage:!this.state.driverPage,
+                        driverPage:!this.state.driverPage,
                         
                     })
                 }
@@ -142,6 +142,7 @@ class Login extends Component {
                         
                     })
                 }
+                
                 alert( res.data.role)
             })
             .catch(error => {

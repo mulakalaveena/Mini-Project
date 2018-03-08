@@ -6,7 +6,7 @@ import List from '../Admin/List'
 import Delete from '../Admin/Delete'
 import axios from 'axios'
 import App from '../App'
-//import Assign from './Assign'
+import Assign from './Assign'
 
 
 
@@ -54,7 +54,7 @@ class Manager extends Component {
                 {this.state.list?<List/>:null} 
                 {this.state.delete?<Delete/>:null}
                 {this.state.logout?<App/>:null}
-                {/* {this.state.assign?<Assign/>:null} */}
+                {this.state.assign?<Assign/>:null}
             </div>
         )
     }
@@ -84,7 +84,7 @@ class Manager extends Component {
     
         })
         .catch(error=>{
-            alert('notes not found')
+            alert('places not found')
         })
         this.setState({
             managerHomepage:false,
