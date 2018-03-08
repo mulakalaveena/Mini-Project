@@ -8,9 +8,16 @@ const session = require('express-session')
 const bodyparser =  require('body-parser')
 const register = require('./controller/register')
 const login = require('./controller/login')
+
+const admin = require('./controller/crud-places')
+const vehicle=require('./controller/crud-vehicle')
+const driver=require('./controller/crud-drivers')
+const manager=require('./controller/crud-final')
+
+const loe=require('./controller/loe')
 const logout = require('./controller/logout')
 const jwt = require('jsonwebtoken')
-//const configurePassport = require('./passport/config')
+
 
 const cookieParser = require('cookie-parser')
 const cors = require('cors')
@@ -19,8 +26,6 @@ const cors = require('cors')
 app.use(passport.initialize());
 
 var morgan = require('morgan')
-
-
 
 app.use(bodyparser.json());
 app.use(cookieParser());
@@ -37,6 +42,12 @@ app.use((error, req, res, next) => {
 app.use('/user',register)
 app.use('/user',login)
 app.use('/user',logout)
+app.use('/users',loe)
+app.use('/places',admin)
+app.use('/vehicles',vehicle)
+app.use('/drivers',driver)
+app.use('/assign',manager)
+//app.use('/places',manager)
 
 
 

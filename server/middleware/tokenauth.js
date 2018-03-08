@@ -1,18 +1,21 @@
 const express=require('express')
 const app = express();
-const user = require('../models/user')
 const cookieParser = require('cookie-parser')
 const models = require('../models/index.js')
+const jwt=require('jsonwebtoken')
 
 app.use(cookieParser())
 
 function tokenMiddleware(req,res,next){
     var token=req.cookies.token;
-    user.verifyToken(token)
+    console.log('token found')
+    var decodedtoken=jwt.verify(token,'lovevolleyball')
+    models.user.findById(decodedtoken.id)
     .then(user=>{
         if(user){
-            req.currentUser=user
+            req.currentUser=user,
             next()
+            
         }else{
             res.send('user not found' )
         }

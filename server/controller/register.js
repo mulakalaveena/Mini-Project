@@ -1,18 +1,16 @@
 const models = require('../models/index.js')
 const router = require('express').Router()
-const argon2 = require('argon2');
-const jwt = require('jsonwebtoken')
+
 
 function register(req,res,next){
-    models.user.findOne({
+    console.log('register')
+   
+    models.drivers.findOne({
         where:{username:req.body.username}
     })
     .then(user=>{
         if(user){
-            res.json({
-                message:'username is taken'
-            })
-        }else{
+            console.log(' exists')
             models.user.create({
                 username:req.body.username,
                 password:req.body.password,
@@ -24,11 +22,11 @@ function register(req,res,next){
                     success:true,
                     result:user.username
                 })
+                
             })
-            .catch(error=>{
-                next(error)
-            })
-        
+        }else{
+            console.log('exists')
+            next()
         }
         
     })

@@ -1,11 +1,14 @@
 'use strict';
 module.exports = (sequelize, DataTypes) => {
-  var place = sequelize.define('place', {
+  var final = sequelize.define('final', {
     from: DataTypes.STRING,
     to: DataTypes.STRING,
     route1: DataTypes.STRING,
     route2: DataTypes.STRING,
-    time:DataTypes.INTEGER
+    time: DataTypes.INTEGER,
+    driver: DataTypes.STRING,
+    vehicle: DataTypes.STRING,
+    status: DataTypes.STRING
   }, {
     classMethods: {
       associate: function(models) {
@@ -13,5 +16,5 @@ module.exports = (sequelize, DataTypes) => {
       }
     }
   });
-  return place;
+  return final;
 };

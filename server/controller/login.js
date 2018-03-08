@@ -14,10 +14,18 @@ function login(req,res,next){
         }
     })
     .then(user=>{
-        console.log('sssssssssss')
-        user.token=jwt.sign({id:user.id},'lovevolleyball');
-        console.log(user.role);
-        res.json({success: true, username: user.username, role: user.role,token:user.token})
+        
+        user.token=[jwt.sign({id:user.id},'lovevolleyball')]
+        user.save()
+        .then(()=>{
+            res.clearCookie('token')
+            res.cookie('token',user.token[user.token.length-1],{encode:String})
+            res.json({success: true, username: user.username, role: user.role,token:user.token})
+        })
+        .catch(error=>{
+            next(error)
+        })
+        
     })
     .catch(error=>{
         next(error)

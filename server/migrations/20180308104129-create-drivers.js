@@ -1,29 +1,19 @@
 'use strict';
 module.exports = {
   up: (queryInterface, Sequelize) => {
-    return queryInterface.createTable('places', {
+    return queryInterface.createTable('drivers', {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      from: {
+      username: {
         type: Sequelize.STRING
       },
-      to: {
+      status: {
         type: Sequelize.STRING
       },
-      route1: {
-        type: Sequelize.STRING
-      },
-      route2: {
-        type: Sequelize.STRING
-      },
-      time: {
-        type: Sequelize.INTEGER
-      },
-
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE
@@ -35,6 +25,6 @@ module.exports = {
     });
   },
   down: (queryInterface, Sequelize) => {
-    return queryInterface.dropTable('places');
+    return queryInterface.dropTable('drivers');
   }
 };

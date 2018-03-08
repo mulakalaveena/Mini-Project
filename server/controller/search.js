@@ -1,6 +1,6 @@
 const models= require('../models/index')
 const router = require('express').Router()
-const tokenAuth=require('../middleware/tokenauth')
+const tokenauth=require('../middleware/tokenauth')
 
 
 function search(req,res,next){
@@ -21,7 +21,7 @@ function search(req,res,next){
                 success:false,
                 message:'place does not exist'
             })
-        }
+        }  
     })
     .catch(error=>{
         next(error)
@@ -29,6 +29,6 @@ function search(req,res,next){
 }
 
 
-router.use(tokenAuth)
+router.use(tokenauth)
 router.post('/search',search)
 module.exports=exports=router;

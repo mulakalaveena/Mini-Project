@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 
 import './App.css';
 import bootstrap from 'bootstrap';
-import Register from './Register.js';
 import Login from './Login.js';
 
 import axios from 'axios'
@@ -13,8 +12,8 @@ class App extends Component {
     this.state = {
       registerPage:true,
       username:'',
-      password:'',
-      role:'',
+      password:''
+      
       //login:false
     }
     this.handleUsername=this.handleUsername.bind(this)
@@ -37,7 +36,7 @@ class App extends Component {
   handleRole(event){
     this.setState({
       role:event.target.value
-})
+    })
   }
   
   handleClick(){
@@ -52,7 +51,7 @@ class App extends Component {
         },
         withCredentials: true
     })
-    .then(()=>{
+    .then((res)=>{
         this.setState({
             username:'',
             password:'',
@@ -82,7 +81,7 @@ class App extends Component {
           <p>Registration form</p>
         </header>
       
-        <form>
+        <form >
           
           <label>username:</label>
           <input type="text"  value={this.state.username}onChange={this.handleUsername}  placeholder="username"/>
@@ -92,7 +91,7 @@ class App extends Component {
           <input type="password" value={this.state.password}onChange={this.handlePassword} placeholder="password"/>
          <br/>
          <br/>
-          <label>role</label>
+          <label>role:</label>
           <select value={this.state.role} onChange={this.handleRole}  >
             <option value="Admin">Admin</option>
             <option value="Manager">Manager</option>

@@ -8,7 +8,7 @@ module.exports = (sequelize, DataTypes) => {
     username: DataTypes.STRING,
     password: DataTypes.STRING,
     role: DataTypes.STRING,
-    token:DataTypes.STRING
+    token:DataTypes.ARRAY(DataTypes.TEXT)
   });
   user.beforeCreate((user, opts) => {
    
@@ -19,12 +19,8 @@ module.exports = (sequelize, DataTypes) => {
     })
     
   })
-  user.prototype.verifyToken=function(token){
-    var decodedtoken=jwt.verify(token,'lovevolleyball')
-    return this.findById(decodedtoken.id);
-
-  }
-  user.prototype.saveToken
+  
+  
   user.prototype.validPassword=function(password){
     console.log('pwd verified')
     return argon2.verify(this.password, password)

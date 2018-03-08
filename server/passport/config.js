@@ -5,12 +5,12 @@ const models = require('../models/index.js')
 
     
 passport.use(new LocalStrategy( function verify(username,password,done){
-        //var role = req.body.role;
+        
         models.user.findOne({
             
             where: {
                 username:username
-                //role:role
+               
             }
         })
         .then(user=>{

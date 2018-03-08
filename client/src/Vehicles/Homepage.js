@@ -2,15 +2,15 @@ import React, { Component } from 'react'
 import bootstrap from 'bootstrap';
 import Create from './Create'
 import Update from './Update'
-import List from './List'
-import Delete from './Delete'
+// import List from './List'
+// import Delete from './Delete'
 import axios from 'axios'
-import App from '../App'
-import Vehicle from '../Vehicles/Homepage'
-import Driver from '../Driver/Homepage'
+import Admin from '../Admin/Homepage'
+
+//import Search from '../Admin/Search'
 
 
-class Admin extends Component {
+class Vehicle extends Component {
     constructor(props) {
         super(props)
         this.state = {
@@ -19,19 +19,16 @@ class Admin extends Component {
             update: false,
             delete: false,
             list: false,
-            role: '',
-            vehicle:false
-            
+            // role: '',
+            // loe: true,
+            // data:[]
 
         }
         this.handleCreate = this.handleCreate.bind(this)
         this.handleUpdate = this.handleUpdate.bind(this)
         this.handleList = this.handleList.bind(this)
         this.handleDelete = this.handleDelete.bind(this)
-        this.handleLogout = this.handleLogout.bind(this)
-        this.handleRole = this.handleRole.bind(this)
-        this.handleClick=this.handleClick.bind(this)
-        this.handleDriver=this.handleDriver.bind(this)
+        this.handleBack = this.handleBack.bind(this)
 
     }
     render() {
@@ -40,7 +37,7 @@ class Admin extends Component {
                 <header className="App-header">
                     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous" />
                     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-                    <p>Admin Homepage</p>
+                    <p>Vehicle Homepage</p>
                 </header>
                 <div>
 
@@ -49,17 +46,11 @@ class Admin extends Component {
                     <button type="button" onClick={this.handleCreate} class="btn btn-primary">Create</button>
                     <button type="button" onClick={this.handleUpdate} class="btn btn-secondary">Update</button>
                     <button type="button" onClick={this.handleList} class="btn btn-success">List</button>
-                    <br />
                     <button type="button" onClick={this.handleDelete} class="btn btn-danger">Delete</button>
-                    <br />
-                    <br />
-                    <button type='button' onClick={this.handleClick} >vehicle</button>
-                    <br />
-                    <br />
-                    <button type='button' onClick={this.handleDriver}>driver</button>
                     <br/>
                     <br/>
-                    <button type='button' onClick={this.handleLogout}>logout</button>
+                    <button type='button' onClick={this.handleBack} >back</button>
+                    
                 </form>
             </div>
         );
@@ -70,10 +61,9 @@ class Admin extends Component {
                 {this.state.create ? <Create /> : null}
                 {this.state.update ? <Update /> : null}
                 {/* {this.state.list?<List/>:null} */}
-                {this.state.delete ? <Delete /> : null}
-                {this.state.logout ? <App /> : null}
-                {this.state.vehicle?<Vehicle/>:null}
-                {this.state.driver?<Driver/>:null}
+                {/* {this.state.delete ? <Delete /> : null} */}
+                {this.state.back ? <Admin /> : null}
+              
             </div>
         )
     }
@@ -90,15 +80,11 @@ class Admin extends Component {
             update: true
         })
     }
-    handleRole(event) {
-        this.setState({
-            role: event.target.value
-        })
-    }
+   
     handleList() {
         axios({
             method: 'get',
-            url: 'http://localhost:3001/places/list',
+            url: 'http://localhost:3001/vehicles/list',
             withCredentials: true
         })
             .then(places => {
@@ -125,47 +111,63 @@ class Admin extends Component {
             delete: true
         })
     }
-    handleLogout() {
-        axios({
-            method:'get',
-            url:'http://localhost:3001/user/logout',
-            withCredentials:true
-        })
-        .then(()=>{
+    handleBack() {
         this.setState({
-            logout: true,
+            back: true,
             adminHomepage: false,
             create: false,
             update: false,
             list: false,
             delete: false
         })
-        alert('user logged out')
-     })
-     .catch(error=>(
-         alert('unable to logout')
-     ))
-    }
-    handleClick(){
-        this.setState({
-            vehicle:true,
-            adminHomepage:false
-        })
-    }
-    handleDriver(){
-        this.setState({
-            driver:true,
-            adminHomepage:false
-        })
     }
 
-    
+    // list(){
+    //     axios({
+    //         method:'post',
+    //         url:'http://localhost:3001/users/loe',
+    //         withCredentials:true
+    //     })
+    //     .then((res)=>{
+    //         var obj=JSON.parse(res.data)
+    //         console.log('hhhhhhhhhh')
+    //         this.setState({
+    //             data:obj,
+    //             role:'',
+    //             // list:true
+    //         })
+    //         alert('role found')
+
+    //     })
+    //     .catch(error=>{
+    //         alert('role not found')
+    //     })
+    //     return(
+    //         <table>
+    //             <tbody>
+    //                 {this.state.data.map(function(key,item){
+    //                     return(
+    //                         <tr key={key}>
+    //                             <td>{item.role}</td>
+    //                             <td>{item.username}</td>
+    //                             <td>{item.id}</td>
+    //                         </tr>
+    //                     )
+    //                 })}
+    //             </tbody>
+    //         </table>
+
+    //     )
+    //     return(
+    //         <div></div>
+    //     )
+    // }
 
 
 }
 
 
-export default Admin
+export default Vehicle
 
 
 

@@ -5,54 +5,59 @@ const parseInt = require('parse-int')
 
 function create(req, res) {
     console.log('got near create')
-    models.place.create({
+    models.finals.create({
         from: req.body.from,
         to: req.body.to,
         route1: req.body.route1,
         route2: req.body.route2,
-        time: parseInt(req.body.time)
+        time: parseInt(req.body.time),
+        driver:req.body.driver,
+        vehicle:req.body.vehicle,
+        status:req.body.status
 
-    }).then(function (place) {
-        res.json(place);
+    }).then(function (data) {
+        res.json(data);
     })
 }
 
 function list(req, res) {
     console.log('got near list')
-    models.place.findAll({}).then(function (places) {
-        res.json(places);
+    models.finals.findAll({}).then(function (data) {
+        res.json(data);
     })
 }
 
 function del(req, res) {
     console.log('got near delete')
-    models.place.destroy({
+    models.finals.destroy({
         where: {
             from: req.body.from
         }
-    }).then(function (place) {
-        res.json(place);
+    }).then(function (data) {
+        res.json(data);
     });
 }
 
 
 function update(req, res) {
     console.log('got near update')
-    models.place.findOne({
+    models.finals.findOne({
         where: {
             from: req.body.from
         }
     })
-    .then(function (place) {
-        if (place) {
-            place.update({
+    .then(function (data) {
+        if (data) {
+            finals.update({
                 to: req.body.to,
                 route1:req.body.route1,
                 route2:req.body.route2,
-                time: parseInt(req.body.time)
+                time: parseInt(req.body.time),
+                driver:req.body.driver,
+                vehicle:req.body.vehicle
                 
-            }).then(function (place) {
-                res.send(place);
+            }).then(function (data) {
+                res.send(data);
             });
         }
     });
