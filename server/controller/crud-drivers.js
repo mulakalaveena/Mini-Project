@@ -6,7 +6,7 @@ const tokenauth = require('../middleware/tokenauth')
 function create(req, res) {
     console.log('got near create')
     models.drivers.create({
-        username:req.body.name,
+        username:req.body.username,
         status:req.body.status
 
     }).then(function (driver) {
@@ -25,7 +25,7 @@ function del(req, res) {
     console.log('got near delete')
     models.drivers.destroy({
         where: {
-            username: req.body.name
+            username: req.body.username
         }
     }).then(function (vehicle) {
         res.json(vehicle);
@@ -37,11 +37,11 @@ function update(req, res) {
     console.log('got near update')
     models.drivers.findOne({
         where: {
-            username: req.body.name
+            username: req.body.username
         }
     })
-    .then(function (vehicles) {
-        if (vehicles) {
+    .then(function (drivers) {
+        if (drivers) {
             drivers.update({
                 status:req.body.status
                 

@@ -35,6 +35,7 @@ class Update extends Component {
                     
                     <label>from:</label>
                     <select value={this.state.from} onChange={this.handleFrom}  >
+                    <option value='select'>select a place</option>
                         <option value="Hyderabad">Hyderabad</option>
                         <option value="Nizamabad">Nizamabad</option>
                         <option value="Adilabad">Adilabad</option>
@@ -44,6 +45,7 @@ class Update extends Component {
                     <br/>
                     <label>to:</label>
                     <select value={this.state.to} onChange={this.handleTo}  >
+                    <option value='select'>select a place</option>
                         <option value="Hyderabad">Hyderabad</option>
                         <option value="Nizamabad">Nizamabad</option>
                         <option value="Adilabad">Adilabad</option>
@@ -53,6 +55,7 @@ class Update extends Component {
                     <br/>
                     <label>route1:</label>
                     <select value={this.state.route1} onChange={this.handleRoute1}  >
+                    <option value='select'>select a place</option>
                         <option value="Hyderabad">Hyderabad</option>
                         <option value="Nizamabad">Nizamabad</option>
                         <option value="Adilabad">Adilabad</option>
@@ -62,6 +65,7 @@ class Update extends Component {
                     <br/>
                     <label>route2:</label>
                     <select value={this.state.route2} onChange={this.handleRoute2}  >
+                    <option value='select'>select a place</option>
                         <option value="Hyderabad">Hyderabad</option>
                         <option value="Nizamabad">Nizamabad</option>
                         <option value="Adilabad">Adilabad</option>

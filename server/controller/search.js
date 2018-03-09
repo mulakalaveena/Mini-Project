@@ -4,7 +4,7 @@ const tokenauth=require('../middleware/tokenauth')
 
 function search(req,res,next){
     console.log('search')
-    models.final.findOne({
+    models.final.findAll({
         where:{
             from:req.body.from,
             to:req.body.to
@@ -12,7 +12,7 @@ function search(req,res,next){
     })
     .then(data=>{
         res.json(data)
-        console.log(data)
+        
     })
     .catch(error=>{
         next()

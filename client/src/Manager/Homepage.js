@@ -1,9 +1,9 @@
 import React, { Component } from 'react'
 import bootstrap from 'bootstrap';
 
-import Update from '../Admin/Update'
-import List from '../Admin/List'
-import Delete from '../Admin/Delete'
+import Update from './Update'
+//import List from '../List'
+import Delete from './Delete'
 import axios from 'axios'
 import App from '../App'
 import Assign from './Assign'
@@ -17,7 +17,9 @@ class Manager extends Component {
             managerHomepage: true,
             assign:false,
             update:false,
-            delete:false
+            delete:false,
+            list:false
+         
         }
         this.handleUpdate=this.handleUpdate.bind(this)
         this.handleList=this.handleList.bind(this)
@@ -51,7 +53,7 @@ class Manager extends Component {
             <div>
                 {this.state.managerHomepage?managerHomepage:null}
                 {this.state.update?<Update/>:null}
-                {this.state.list?<List/>:null} 
+                {/* {this.state.list?<List/>:null}  */}
                 {this.state.delete?<Delete/>:null}
                 {this.state.logout?<App/>:null}
                 {this.state.assign?<Assign/>:null}
@@ -67,29 +69,12 @@ class Manager extends Component {
         })
     }
     handleList(){
-        axios({
-            method:'get',
-            url:'http://localhost:3001/places/list',
-            withCredentials:true
-        })
-        .then(places=>{
-            this.setState({
-                places:places.data,
-                managerHomepage:false,
-                create:false,
-                update:false
-            
-    
-            })
-    
-        })
-        .catch(error=>{
-            alert('places not found')
-        })
+       
         this.setState({
             managerHomepage:false,
             create:false,
-            update:false
+            update:false,
+            list:true
             
         })
     }
@@ -103,14 +88,17 @@ class Manager extends Component {
         })
     }
     handleLogout(){
-        this.setState({
-            logout:true,
-            managerHomepage:false,
-            create:false,
-            update:false,
-            list:false,
-            delete:false,
-            assign:false
+        axios({
+            method:'post',
+            url:'http://localhost:3001/manager/logout',
+            withCredentials: true
+        })
+        .then((res)=>{
+            window.location.reload(true);
+            
+        })
+        .catch(error=>{
+            alert('error logging out')
         })
     }
     handleAssign(){

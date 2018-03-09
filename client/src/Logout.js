@@ -11,7 +11,7 @@ class Logout extends Component{
             loggedin:true
         }
         
-        this.handleClick = this.handleClick.bind(this)
+        this.handleLogout = this.handleLogout.bind(this)
     }
     render(){
         return(
@@ -24,20 +24,15 @@ class Logout extends Component{
         )
     }
     
-    handleClick(){
+    handleLogout(){
         axios({
             method:'post',
             url:'http://localhost:3001/user/logout',
-            data:{
-               message:'you are logging out'
-            },
             withCredentials: true
         })
         .then((res)=>{
-            this.setState({
-                loggedin:!this.state.loggedin
-            })
-            alert('user logged out')
+            window.location.reload(true);
+            
         })
         .catch(error=>{
             alert('error logging out')

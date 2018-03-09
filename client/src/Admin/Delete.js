@@ -32,6 +32,7 @@ class Delete extends Component {
                     
                     <label>from:</label>
                     <select value={this.state.from} onChange={this.handleFrom}  >
+                    <option value='select'>select a place</option>
                         <option value="Hyderabad">Hyderabad</option>
                         <option value="Nizamabad">Nizamabad</option>
                         <option value="Adilabad">Adilabad</option>

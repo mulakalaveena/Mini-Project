@@ -5,16 +5,15 @@ import $ from 'jquery'
 
 
 
-class List extends Component {
+class Delete extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            from: '',
+            
             data:[]
            
         }
-        this.handleSubmit=this.handleSubmit.bind(this)
-        // this.handleDelete=this.handleDelete.bind(this)
+        this.handleList=this.handleList.bind(this)
         
     }
 
@@ -26,10 +25,19 @@ class List extends Component {
                     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous" />
                     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
                     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-                    <p>Admin Homepage</p>
+                    <p>manager Homepage</p>
                 </header>
                 <form>
-                    
+                    <label>from</label>
+                    <select value={this.state.from} onChange={this.handleFrom}  >
+                        <option value='select'>select a place</option>
+                        <option value="Hyderabad">Hyderabad</option>
+                        <option value="Nizamabad">Nizamabad</option>
+                        <option value="Adilabad">Adilabad</option>
+                        <option value="Nirmal">Nirmal</option>
+
+                    </select>
+                    <br/>
                     
                     <table style={border} id='tb'>
                         <thead style={border}>
@@ -39,7 +47,9 @@ class List extends Component {
                                 <th style={border}>route1</th>
                                 <th style={border}>route2</th>
                                 <th style={border}>time(hrs)</th>
-                               
+                                <th style={border}>driver</th>
+                                <th style={border}>vehicle</th>
+                                <th style={border}>status</th>
                                 
 
                              </tr>
@@ -52,6 +62,10 @@ class List extends Component {
                                     <td style={border}>{item.route1}</td>
                                     <td style={border}>{item.route2}</td>
                                     <td style={border}>{item.time}</td>
+                                    <td style={border}>{item.driver}</td>
+                                    <td style={border}>{item.vehicle}</td>
+                                    <td style={border}>{item.status}</td>
+                                                                                                                                                
                                 <td><a id="addMore" title="delete"><button value='delete' id='del' type='button'>delete</button></a></td>
                                     
                                     <td><a   class='remove'><span class='glyphicon glyphicon-remove'></span></a></td>
@@ -81,47 +95,19 @@ class List extends Component {
         )
     }
     componentWillMount(){
-        this.handleSubmit()
+        this.handleList()
     }
 
-    // handleDelete(){
-       
-    // }
     
-//    handleDelete(){
-//     axios({
-//         method: 'post',
-//         url: 'http://localhost:3001/places/delete',
-//         data: {
-//             from: this.state.from,
-            
-//         },
-//         withCredentials: true
-//     })
-//     .then(() => {
-//         this.setState({
-//             from: '',
-            
-//         })
-//         alert('details deleted')
-//     })
-//     .catch(error => {
-//         alert('add correct details')
-//     })
-//    }
-    handleSubmit() {
+    handleList() {
         axios({
             method: 'get',
-            url: 'http://localhost:3001/places/list',
-            data: {
-                from: this.state.from
-                
-            },
+            url: 'http://localhost:3001/finals/list',
+           
             withCredentials: true
         })
         .then((res) => {
             this.setState({
-                from: '',
                 data:res.data
                 
             })
@@ -131,4 +117,4 @@ class List extends Component {
         })
     }
 }
-export default List
+export default Delete

@@ -3,14 +3,12 @@ import axios from 'axios';
 import bootstrap, { Collapse } from 'bootstrap';
 import App from '../App';
 import Manager from './Homepage';
-import Admin from '../Admin/Homepage';
-import {BootstrapTable, TableHeaderColumn} from 'react-bootstrap-table';
 
-class Create extends Component {
+class Update extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            create: true,
+            update: true,
             from: 'select',
             to: 'select',
             route1: 'select',
@@ -18,20 +16,20 @@ class Create extends Component {
             time: 0,
             driver:'select',
             vehicle:'select',
-            //status:'select',
+            status:'select',
             list:true,
             vehicle:true,
             data:[],
             vdata:[]
         }
-        this.handleCreate = this.handleCreate.bind(this)
+        this.handleUpdate = this.handleUpdate.bind(this)
         this.handleBack = this.handleBack.bind(this)
         this.handleFrom = this.handleFrom.bind(this)
         this.handleTo = this.handleTo.bind(this)
         this.handleRoute1 = this.handleRoute1.bind(this)
         this.handleRoute2 = this.handleRoute2.bind(this)
         this.handleTime = this.handleTime.bind(this)
-        //this.handleStatus = this.handleStatus.bind(this)
+        this.handleStatus = this.handleStatus.bind(this)
         this.handleList=this.handleList.bind(this)
         this.handleVehicle=this.handleVehicle.bind(this)
         this.handleName=this.handleName.bind(this)
@@ -92,21 +90,21 @@ class Create extends Component {
                     <label>Time(hours):</label>
                     <input id="number" value={this.state.time}onChange={this.handleTime}type="number"min="0"/>
                     <br/>
-                    {/* <label>status:</label>
+                    <label>status:</label>
                     <select value={this.state.status} onChange={this.handleStatus}  >
                     <option value='select'>select a value</option>
                         <option value="not assigned">reached</option>
                         <option value="assigned">not reached</option>
                         <option value="assigned">on the way</option>
                     </select>
-                    <br /> */}
+                    <br />
                     <label>driver:</label>
                     <input type='text' onChange={this.handleName} placeholder='drivers name'/>
                     <br/>
                     <label>vehicle:</label>
                     <input type='text' onChange={this.handleModel} placeholder='vehicles name'/>
                     <br/>
-                    <button type="button" onClick={this.handleCreate}>assign</button>
+                    <button type="button" onClick={this.handleCreate}>create</button>
                     <br />
                     <br />
                     <button type='button' onClick={this.handleBack}>Back</button>
@@ -160,10 +158,8 @@ class Create extends Component {
         
         return (
             <div>
-                {this.state.create ? createPage : null}
-                {this.state.back ? <Admin /> : null}
-                {this.state.driverstatus?this.handleDupdate:null}
-                              
+                {this.state.update ? createPage : null}
+                {this.state.back ? <Manager /> : null}
 
             </div>
         )
@@ -209,6 +205,7 @@ class Create extends Component {
         })
     }
     
+
     handleFrom(event) {
         this.setState({
             from: event.target.value
@@ -234,11 +231,11 @@ class Create extends Component {
             time:event.target.value
         })
     }
-    // handleStatus(event){
-    //     this.setState({
-    //         status:event.target.value
-    //     })
-    // }
+    handleStatus(event){
+        this.setState({
+            status:event.target.value
+        })
+    }
     handleName(event){
         this.setState({
             driver:event.target.value
@@ -249,10 +246,10 @@ class Create extends Component {
             vehicle:event.target.value
         })
     }
-    handleCreate() {
+    handleUpdate() {
         axios({
             method: 'post',
-            url: 'http://localhost:3001/assign/create',
+            url: 'http://localhost:3001/assign/update',
             data: {
                 from: this.state.from,
                 to: this.state.to,
@@ -265,74 +262,31 @@ class Create extends Component {
             },
             withCredentials: true
         })
-        .then((res) => {
-            this.setState({
-                from: '',
-                to: '',
-                route1: '',
-                route2: '',
-                time:'',
-                status:'select',
-                driverstatus:true
-                                
+            .then((res) => {
+                this.setState({
+                    from: '',
+                    to: '',
+                    route1: '',
+                    route2: '',
+                    time:'',
+                    driver:'select',
+                    vehicle:'select',
+                    status:'select'
+                                    
+                })
+                alert('details added')
             })
-            alert('details added')
-        })
-        .catch(error => {
-            alert('add correct details')
-        }),
-        axios({
-            method: 'post',
-            url: 'http://localhost:3001/drivers/update',
-            data: {
-                username: this.state.driver,
-                status: 'assigned',
-               
-            },
-            withCredentials: true
-        })
-        .then((res) => {
-            this.setState({
-                data:res.data,
-                driver: '',
-                status: ''
-                
+            .catch(error => {
+                alert('add correct details')
             })
-            //alert('details updated')
-        })
-        .catch(error => {
-            alert('add correct details')
-        }),
-        axios({
-            method: 'post',
-            url: 'http://localhost:3001/vehicles/update',
-            data: {
-                model: this.state.vehicle,
-                status: 'assigned',
-               
-            },
-            withCredentials: true
-        })
-        .then((res) => {
-            this.setState({
-                vdata:res.data,
-                model: '',
-                status: '' 
-                
-            })
-            //alert('details updated')
-        })
-        .catch(error => {
-            alert('add correct details')
-        })
     }
     
     handleBack() {
         this.setState({
-            create: false,
+            update: false,
             back: true
         })
     }
 
 }
-export default Create
+export default Update

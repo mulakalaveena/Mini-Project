@@ -4,13 +4,16 @@ const models = require('../models/index.js')
 const router = require('express').Router()
 const passport = require('passport')
 const cookie =require('cookie-parser')
+
+
 function logout(req,res,){
-    req.clearCookie('token')
-        res.redirect('/user')
+    console.log('logout')
+    res.clearCookie('token')
+    res.json({success:true})
   
 
 }
-router.get('/logout',logout)
+router.post('/logout',logout)
 
 module.exports = exports=router
 

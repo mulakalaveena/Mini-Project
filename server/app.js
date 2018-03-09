@@ -48,6 +48,9 @@ app.use('/places',admin)
 app.use('/vehicles',vehicle)
 app.use('/drivers',driver)
 app.use('/assign',manager)
+app.use('/manager',logout)
+app.use('/ruser',logout)
+
 app.use('/search',search)
 
 

@@ -3,24 +3,26 @@ import axios from 'axios';
 import bootstrap from 'bootstrap';
 import App from '../App';
 
-import Admin from '../Admin/Homepage';
+
 
 class Status extends Component {
     constructor(props) {
         super(props)
         this.state = {
             driver: '',
-            status:'select'
+            status:'select',
+            dstatus:true
             
         }
         
         this.handleChange=this.handleChange.bind(this)
         this.handleStatus = this.handleStatus.bind(this)
         this.handleClick=this.handleClick.bind(this)
+        this.handleLogout=this.handleLogout.bind(this)
 
     }
     render() {   
-        return(
+        var driverpage=(
             <div className="App">
             <header className="App-header">
                 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous" />
@@ -43,11 +45,21 @@ class Status extends Component {
             <br />
             <br/>
             <button type='button' onClick={this.handleClick}>Update</button>
+            <br/>
+            <button type='button' onClick={this.handleLogout}>logout</button>
             </form>
-            {this.state.logout?<Admin/>:null}   
             </div>
-              
+            
+            
+        );
+        return(
+             <div>
+                 {this.state.dstatus?driverpage:null}
+                {this.state.logout?<App/>:null}   
+                 
+             </div>   
         )
+          
     }
     
     
@@ -60,6 +72,14 @@ class Status extends Component {
     handleChange(event) {
         this.setState({
             driver: event.target.value
+        })
+    }
+    handleLogout(){
+        this.setState({
+            
+            dstatus:false,
+            logout:true
+
         })
     }
     
@@ -88,12 +108,7 @@ class Status extends Component {
             })
     }
     
-    handleLogout() {
-        this.setState({
-           
-            logout: true
-        })
-    }
+   
 
 }
 export default Status
