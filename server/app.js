@@ -14,6 +14,7 @@ const vehicle=require('./controller/crud-vehicle')
 const driver=require('./controller/crud-drivers')
 const manager=require('./controller/crud-final')
 const search=require('./controller/search')
+const finals=require('./controller/crud-final')
 
 const loe=require('./controller/loe')
 const logout = require('./controller/logout')
@@ -50,6 +51,8 @@ app.use('/drivers',driver)
 app.use('/assign',manager)
 app.use('/manager',logout)
 app.use('/ruser',logout)
+app.use('/driver',logout)
+app.use('/finals',finals)
 
 app.use('/search',search)
 

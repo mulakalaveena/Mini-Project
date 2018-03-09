@@ -11,7 +11,6 @@ class Status extends Component {
         this.state = {
             driver: '',
             status:'select',
-            dstatus:true
             
         }
         
@@ -22,7 +21,7 @@ class Status extends Component {
 
     }
     render() {   
-        var driverpage=(
+        return(
             <div className="App">
             <header className="App-header">
                 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous" />
@@ -52,13 +51,7 @@ class Status extends Component {
             
             
         );
-        return(
-             <div>
-                 {this.state.dstatus?driverpage:null}
-                {this.state.logout?<App/>:null}   
-                 
-             </div>   
-        )
+        
           
     }
     
@@ -75,11 +68,17 @@ class Status extends Component {
         })
     }
     handleLogout(){
-        this.setState({
+        axios({
+            method:'post',
+            url:'http://localhost:3001/driver/logout',
+            withCredentials: true
+        })
+        .then((res)=>{
+            window.location.reload(true);
             
-            dstatus:false,
-            logout:true
-
+        })
+        .catch(error=>{
+            alert('error logging out')
         })
     }
     

@@ -1,25 +1,27 @@
 import React, { Component } from 'react'
 import axios from 'axios';
 import bootstrap from 'bootstrap';
-import $ from 'jquery'
+import Manager from './Homepage'
 
 
-
-class Delete extends Component {
+class List extends Component {
     constructor(props) {
         super(props)
         this.state = {
+            data:[],
+            list:true,
             
-            data:[]
            
         }
         this.handleList=this.handleList.bind(this)
+        this.handleDelete=this.handleDelete.bind(this)
+        this.handleBack=this.handleBack.bind(this)
         
     }
 
     render() {
         var border={border_collapse:'collapse',border:'1px solid black',align:'left'};
-        return (
+        var listpage=(
             <div className="App">
                 <header className="App-header">
                     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous" />
@@ -28,21 +30,10 @@ class Delete extends Component {
                     <p>manager Homepage</p>
                 </header>
                 <form>
-                    <label>from</label>
-                    <select value={this.state.from} onChange={this.handleFrom}  >
-                        <option value='select'>select a place</option>
-                        <option value="Hyderabad">Hyderabad</option>
-                        <option value="Nizamabad">Nizamabad</option>
-                        <option value="Adilabad">Adilabad</option>
-                        <option value="Nirmal">Nirmal</option>
-
-                    </select>
-                    <br/>
-                    
                     <table style={border} id='tb'>
                         <thead style={border}>
                             <tr style={border} >
-                                <th style={border} name='from[]' >from</th>
+                                <th style={border}  >from</th>
                                 <th style={border}>to</th>
                                 <th style={border}>route1</th>
                                 <th style={border}>route2</th>
@@ -50,8 +41,6 @@ class Delete extends Component {
                                 <th style={border}>driver</th>
                                 <th style={border}>vehicle</th>
                                 <th style={border}>status</th>
-                                
-
                              </tr>
                         </thead>
                         <tbody style={border}>{this.state.data.map(function(item,key){
@@ -66,38 +55,33 @@ class Delete extends Component {
                                     <td style={border}>{item.vehicle}</td>
                                     <td style={border}>{item.status}</td>
                                                                                                                                                 
-                                <td><a id="addMore" title="delete"><button value='delete' id='del' type='button'>delete</button></a></td>
+                                    <td><button value='delete' id='del' onClick={this.handleDelete.bind(this,key)} type='button'>delete</button></td>
                                     
-                                    <td><a   class='remove'><span class='glyphicon glyphicon-remove'></span></a></td>
                                 </tr>
                             )
-                         })} </tbody>
-
-
+                         },this)} </tbody>
                     </table>
-                    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-                    
-                    <script>
-                        $(document).ready(function(){
-                             $("button").click(function(){
-                                var del = $(this).attr("id");
-                                    $(`#del${del}`).remove();
-                                    $(`#${del}`).remove();
-        
-                                 })
-                            });        
-                        });
-        
-                    </script>
                    
+                    <button type='button' onClick={this.handleBack}>back</button>
                 </form>
+            </div>
+        )
+        return(
+            <div>
+                {this.state.list?listpage:null}
+                {this.state.back?<Manager/>:null}
             </div>
         )
     }
     componentWillMount(){
         this.handleList()
     }
-
+    handleBack() {
+        this.setState({
+            list: false,
+            back: true
+        })
+    }
     
     handleList() {
         axios({
@@ -116,5 +100,27 @@ class Delete extends Component {
             alert('add correct details')
         })
     }
+    handleDelete(key){
+        axios({
+            method: 'post',
+            url: 'http://localhost:3001/finals/delete',
+            data: {
+                from: this.state.data[key].from,
+                
+            },
+            withCredentials: true
+        })
+        .then(() => {
+            this.setState({
+                from: '',
+                
+            })
+            alert('details deleted')
+            this.handleList()
+        })
+        .catch(error => {
+            alert('add correct details')
+        })
+    }
 }
-export default Delete
+export default List

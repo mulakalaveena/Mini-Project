@@ -3,11 +3,9 @@ import bootstrap from 'bootstrap';
 import Create from './Create'
 import Update from './Update'
 import List from './List'
-import Delete from './Delete'
 import axios from 'axios'
 import Admin from '../Admin/Homepage'
 
-//import Search from '../Admin/Search'
 
 
 class Vehicle extends Component {
@@ -17,17 +15,13 @@ class Vehicle extends Component {
             adminHomepage: true,
             create: false,
             update: false,
-            delete: false,
-            list: false,
-            // role: '',
-            // loe: true,
-            // data:[]
+            list: false
+            
 
         }
         this.handleCreate = this.handleCreate.bind(this)
         this.handleUpdate = this.handleUpdate.bind(this)
         this.handleList = this.handleList.bind(this)
-        this.handleDelete = this.handleDelete.bind(this)
         this.handleBack = this.handleBack.bind(this)
 
     }
@@ -46,7 +40,6 @@ class Vehicle extends Component {
                     <button type="button" onClick={this.handleCreate} class="btn btn-primary">Create</button>
                     <button type="button" onClick={this.handleUpdate} class="btn btn-secondary">Update</button>
                     <button type="button" onClick={this.handleList} class="btn btn-success">List</button>
-                    <button type="button" onClick={this.handleDelete} class="btn btn-danger">Delete</button>
                     <br/>
                     <br/>
                     <button type='button' onClick={this.handleBack} >back</button>
@@ -61,7 +54,6 @@ class Vehicle extends Component {
                 {this.state.create ? <Create /> : null}
                 {this.state.update ? <Update /> : null}
                 {this.state.list?<List/>:null}
-                {this.state.delete ? <Delete /> : null}
                 {this.state.back ? <Admin /> : null}
               
             </div>
@@ -86,17 +78,6 @@ class Vehicle extends Component {
             update: true
         })
     }
-   
-   
-    handleDelete() {
-        this.setState({
-            adminHomepage: false,
-            create: false,
-            update: false,
-            list: false,
-            delete: true
-        })
-    }
     handleBack() {
         this.setState({
             back: true,
@@ -108,48 +89,7 @@ class Vehicle extends Component {
         })
     }
 
-    // list(){
-    //     axios({
-    //         method:'post',
-    //         url:'http://localhost:3001/users/loe',
-    //         withCredentials:true
-    //     })
-    //     .then((res)=>{
-    //         var obj=JSON.parse(res.data)
-    //         console.log('hhhhhhhhhh')
-    //         this.setState({
-    //             data:obj,
-    //             role:'',
-    //             // list:true
-    //         })
-    //         alert('role found')
-
-    //     })
-    //     .catch(error=>{
-    //         alert('role not found')
-    //     })
-    //     return(
-    //         <table>
-    //             <tbody>
-    //                 {this.state.data.map(function(key,item){
-    //                     return(
-    //                         <tr key={key}>
-    //                             <td>{item.role}</td>
-    //                             <td>{item.username}</td>
-    //                             <td>{item.id}</td>
-    //                         </tr>
-    //                     )
-    //                 })}
-    //             </tbody>
-    //         </table>
-
-    //     )
-    //     return(
-    //         <div></div>
-    //     )
-    // }
-
-
+    
 }
 
 

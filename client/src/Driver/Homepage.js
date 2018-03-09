@@ -2,12 +2,10 @@ import React, { Component } from 'react'
 import bootstrap from 'bootstrap';
 import Create from './Create'
 import Update from './Update'
-// import List from './List'
-// import Delete from './Delete'
+import List from './List'
 import axios from 'axios'
 import Admin from '../Admin/Homepage'
 
-//import Search from '../Admin/Search'
 
 
 class Driver extends Component {
@@ -19,15 +17,12 @@ class Driver extends Component {
             update: false,
             delete: false,
             list: false,
-            // role: '',
-            // loe: true,
-            // data:[]
+            
 
         }
         this.handleCreate = this.handleCreate.bind(this)
         this.handleUpdate = this.handleUpdate.bind(this)
         this.handleList = this.handleList.bind(this)
-        this.handleDelete = this.handleDelete.bind(this)
         this.handleBack = this.handleBack.bind(this)
 
     }
@@ -46,7 +41,6 @@ class Driver extends Component {
                     <button type="button" onClick={this.handleCreate} class="btn btn-primary">Create</button>
                     <button type="button" onClick={this.handleUpdate} class="btn btn-secondary">Update</button>
                     <button type="button" onClick={this.handleList} class="btn btn-success">List</button>
-                    <button type="button" onClick={this.handleDelete} class="btn btn-danger">Delete</button>
                     <br/>
                     <br/>
                     <button type='button' onClick={this.handleBack} >back</button>
@@ -60,8 +54,7 @@ class Driver extends Component {
                 {this.state.adminHomepage ? adminHomepage : null}
                 {this.state.create ? <Create /> : null}
                 {this.state.update ? <Update /> : null}
-                {/* {this.state.list?<List/>:null} */}
-                {/* {this.state.delete ? <Delete /> : null} */}
+                {this.state.list?<List/>:null}
                 {this.state.back ? <Admin /> : null}
               
             </div>
@@ -82,35 +75,15 @@ class Driver extends Component {
     }
    
     handleList() {
-        axios({
-            method: 'get',
-            url: 'http://localhost:3001/vehicles/list',
-            withCredentials: true
-        })
-            .then(places => {
-                this.setState({
-                    places: places.data,
-                    adminHomepage: false,
-                    create: false,
-                    update: false
-
-
-                })
-
-            })
-            .catch(error => {
-                alert('notes not found')
-            })
-    }
-    handleDelete() {
         this.setState({
             adminHomepage: false,
             create: false,
             update: false,
-            list: false,
-            delete: true
+            list: true,
+            delete: false
         })
     }
+    
     handleBack() {
         this.setState({
             back: true,

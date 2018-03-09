@@ -2,10 +2,8 @@ import React, { Component } from 'react'
 import bootstrap from 'bootstrap';
 
 import Update from './Update'
-//import List from '../List'
-import Delete from './Delete'
+import List from './List'
 import axios from 'axios'
-import App from '../App'
 import Assign from './Assign'
 
 
@@ -17,13 +15,11 @@ class Manager extends Component {
             managerHomepage: true,
             assign:false,
             update:false,
-            delete:false,
             list:false
          
         }
         this.handleUpdate=this.handleUpdate.bind(this)
         this.handleList=this.handleList.bind(this)
-        this.handleDelete=this.handleDelete.bind(this)
         this.handleLogout=this.handleLogout.bind(this)
         this.handleAssign=this.handleAssign.bind(this)
     }
@@ -39,7 +35,6 @@ class Manager extends Component {
                 <form>
                     <button type="button" onClick={this.handleUpdate} class="btn btn-secondary">Update</button>
                     <button type="button" onClick={this.handleList} class="btn btn-success">List</button>
-                    <button type="button" onClick={this.handleDelete} class="btn btn-danger">Delete</button>
                     <br/>
                     <br/>
                     <button type='button' onClick={this.handleAssign} class="btn btn-info">Assign</button>
@@ -53,9 +48,7 @@ class Manager extends Component {
             <div>
                 {this.state.managerHomepage?managerHomepage:null}
                 {this.state.update?<Update/>:null}
-                {/* {this.state.list?<List/>:null}  */}
-                {this.state.delete?<Delete/>:null}
-                {this.state.logout?<App/>:null}
+                {this.state.list?<List/>:null} 
                 {this.state.assign?<Assign/>:null}
             </div>
         )
@@ -78,15 +71,7 @@ class Manager extends Component {
             
         })
     }
-    handleDelete(){
-        this.setState({
-            managerHomepage:false,
-            create:false,
-            update:false,
-            list:false,
-            delete:true
-        })
-    }
+   
     handleLogout(){
         axios({
             method:'post',

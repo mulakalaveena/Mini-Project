@@ -3,8 +3,6 @@ import axios from 'axios';
 import bootstrap, { Collapse } from 'bootstrap';
 import App from '../App';
 import Manager from './Homepage';
-import Admin from '../Admin/Homepage';
-import {BootstrapTable, TableHeaderColumn} from 'react-bootstrap-table';
 
 class Create extends Component {
     constructor(props) {
@@ -18,7 +16,6 @@ class Create extends Component {
             time: 0,
             driver:'select',
             vehicle:'select',
-            //status:'select',
             list:true,
             vehicle:true,
             data:[],
@@ -31,7 +28,6 @@ class Create extends Component {
         this.handleRoute1 = this.handleRoute1.bind(this)
         this.handleRoute2 = this.handleRoute2.bind(this)
         this.handleTime = this.handleTime.bind(this)
-        //this.handleStatus = this.handleStatus.bind(this)
         this.handleList=this.handleList.bind(this)
         this.handleVehicle=this.handleVehicle.bind(this)
         this.handleName=this.handleName.bind(this)
@@ -92,14 +88,7 @@ class Create extends Component {
                     <label>Time(hours):</label>
                     <input id="number" value={this.state.time}onChange={this.handleTime}type="number"min="0"/>
                     <br/>
-                    {/* <label>status:</label>
-                    <select value={this.state.status} onChange={this.handleStatus}  >
-                    <option value='select'>select a value</option>
-                        <option value="not assigned">reached</option>
-                        <option value="assigned">not reached</option>
-                        <option value="assigned">on the way</option>
-                    </select>
-                    <br /> */}
+                    
                     <label>driver:</label>
                     <input type='text' onChange={this.handleName} placeholder='drivers name'/>
                     <br/>
@@ -125,8 +114,7 @@ class Create extends Component {
                                     <td style={border}>{item.status}</td>
                                 </tr>
                             )
-                         })} </tbody>
-
+                         },this)} </tbody>
 
                     </table >
                     <br/>
@@ -146,7 +134,7 @@ class Create extends Component {
                                     <td style={border}>{item.status}</td>
                                 </tr>
                             )
-                         })} </tbody>
+                         },this)} </tbody>
 
 
                     </table>
@@ -161,8 +149,7 @@ class Create extends Component {
         return (
             <div>
                 {this.state.create ? createPage : null}
-                {this.state.back ? <Admin /> : null}
-                {this.state.driverstatus?this.handleDupdate:null}
+                {this.state.back ? <Manager /> : null}
                               
 
             </div>
@@ -179,10 +166,9 @@ class Create extends Component {
             withCredentials:true
         })
         .then(res=>{
-            
             this.setState({
-                data:res.data,
-                list:false
+                data:res.data
+                
             })
             
         })
@@ -197,10 +183,8 @@ class Create extends Component {
             withCredentials:true
         })
         .then(res=>{
-            
             this.setState({
-                vdata:res.data,
-                list:false
+                vdata:res.data
             })
             
         })
@@ -234,11 +218,7 @@ class Create extends Component {
             time:event.target.value
         })
     }
-    // handleStatus(event){
-    //     this.setState({
-    //         status:event.target.value
-    //     })
-    // }
+   
     handleName(event){
         this.setState({
             driver:event.target.value
@@ -259,7 +239,6 @@ class Create extends Component {
                 route1: this.state.route1,
                 route2: this.state.route2,
                 time:this.state.time,
-                status:this.state.status,
                 driver:this.state.driver,
                 vehicle:this.state.vehicle
             },
@@ -272,14 +251,13 @@ class Create extends Component {
                 route1: '',
                 route2: '',
                 time:'',
-                status:'select',
                 driverstatus:true
                                 
             })
-            alert('details added')
+            //alert('details added')
         })
         .catch(error => {
-            alert('add correct details')
+            alert('add correct details to assign')
         }),
         axios({
             method: 'post',
@@ -298,10 +276,11 @@ class Create extends Component {
                 status: ''
                 
             })
+            this.handleList()
             //alert('details updated')
         })
         .catch(error => {
-            alert('add correct details')
+            alert('add correct driver details')
         }),
         axios({
             method: 'post',
@@ -320,10 +299,11 @@ class Create extends Component {
                 status: '' 
                 
             })
+            this.handleVehicle()
             //alert('details updated')
         })
         .catch(error => {
-            alert('add correct details')
+            alert('add correct vehicle details')
         })
     }
     

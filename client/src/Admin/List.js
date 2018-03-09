@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import axios from 'axios';
 import bootstrap from 'bootstrap';
-
+import Admin from './Homepage'
 
 
 
@@ -10,17 +10,19 @@ class List extends Component {
         super(props)
         this.state = {
             from: '',
-            data:[]
+            data:[],
+            list:true
            
         }
         this.handleSubmit=this.handleSubmit.bind(this)
         this.handleDelete=this.handleDelete.bind(this)
+        this.handleBack=this.handleBack.bind(this)
         
     }
 
     render() {
         var border={border_collapse:'collapse',border:'1px solid black',align:'left'};
-        return (
+        var listpage= (
             <div className="App">
                 <header className="App-header">
                     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous" />
@@ -34,7 +36,7 @@ class List extends Component {
                     <table style={border} id='tb'>
                         <thead style={border}>
                             <tr style={border} >
-                                <th style={border} name='from[]' >from</th>
+                                <th style={border}  >from</th>
                                 <th style={border}>to</th>
                                 <th style={border}>route1</th>
                                 <th style={border}>route2</th>
@@ -60,11 +62,17 @@ class List extends Component {
 
 
                     </table>
-                    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+                    <button type='button' onClick={this.handleBack}>Back</button>
                     
                    
                    
                 </form>
+            </div>
+        )
+        return(
+            <div>
+                {this.state.list?listpage:null}
+                {this.state.back?<Admin/>:null}
             </div>
         )
     }
@@ -100,21 +108,24 @@ class List extends Component {
         axios({
             method: 'get',
             url: 'http://localhost:3001/places/list',
-            data: {
-                from: this.state.from
-                
-            },
+            
             withCredentials: true
         })
         .then((res) => {
             this.setState({
-                from: '',
+                
                 data:res.data
                 
             })
         })
         .catch(error => {
             alert('add correct details')
+        })
+    }
+    handleBack(){
+        this.setState({
+            list:false,
+            back:true
         })
     }
 }

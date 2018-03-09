@@ -18,6 +18,7 @@ function list(req, res) {
     console.log('got near vehicle list')
     models.vehicles.findAll({}).then(function (vehicle) {
         res.json(vehicle);
+        console.log(vehicle)
     })
 }
 
@@ -34,7 +35,7 @@ function del(req, res) {
 
 
 function update(req, res) {
-    console.log('got near update')
+    console.log('got near vehicle update')
     models.vehicles.findOne({
         where: {
             model: req.body.model

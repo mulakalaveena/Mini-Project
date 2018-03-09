@@ -3,7 +3,6 @@ import bootstrap from 'bootstrap';
 import Create from './Create'
 import Update from './Update'
 import List from './List'
-import Delete from './Delete'
 import axios from 'axios'
 import App from '../App'
 import Vehicle from '../Vehicles/Homepage'
@@ -17,7 +16,6 @@ class Admin extends Component {
             adminHomepage: true,
             create: false,
             update: false,
-            delete: false,
             list: false,
             role: '',
             vehicle:false,
@@ -29,7 +27,6 @@ class Admin extends Component {
         this.handleCreate = this.handleCreate.bind(this)
         this.handleUpdate = this.handleUpdate.bind(this)
         this.handleList = this.handleList.bind(this)
-        this.handleDelete = this.handleDelete.bind(this)
         this.handleLogout = this.handleLogout.bind(this)
         this.handleRole = this.handleRole.bind(this)
         this.handleClick=this.handleClick.bind(this)
@@ -56,7 +53,6 @@ class Admin extends Component {
                     <button type="button" onClick={this.handleUpdate} class="btn btn-secondary">Update</button>
                     <button type="button" onClick={this.handleList} class="btn btn-success">List</button>
                     <br />
-                    <button type="button" onClick={this.handleDelete} class="btn btn-danger">Delete</button>
                     <br />
                     <br />
                     <button type='button' onClick={this.handleClick} >vehicle</button>
@@ -119,8 +115,6 @@ class Admin extends Component {
                 {this.state.create ? <Create /> : null}
                 {this.state.update ? <Update /> : null}
                 {this.state.list?<List/>:null}
-                {this.state.delete ? <Delete /> : null}
-                {this.state.logout ? <App /> : null}
                 {this.state.vehicle?<Vehicle/>:null}
                 {this.state.driver?<Driver/>:null}
             </div>
@@ -203,35 +197,9 @@ class Admin extends Component {
             update: false,
             list:true
         })
-        // axios({
-        //     method: 'get',
-        //     url: 'http://localhost:3001/places/list',
-        //     withCredentials: true
-        // })
-        //     .then(places => {
-        //         this.setState({
-        //             places: places.data,
-        //             adminHomepage: false,
-        //             create: false,
-        //             update: false
-
-
-        //         })
-
-        //     })
-        //     .catch(error => {
-        //         alert('notes not found')
-        //     })
+        
     }
-    handleDelete() {
-        this.setState({
-            adminHomepage: false,
-            create: false,
-            update: false,
-            list: false,
-            delete: true
-        })
-    }
+    
     
     handleClick(){
         this.setState({
