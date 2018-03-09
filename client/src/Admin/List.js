@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import axios from 'axios';
 import bootstrap from 'bootstrap';
-//import $ from 'jquery'
+
 
 
 
@@ -14,7 +14,7 @@ class List extends Component {
            
         }
         this.handleSubmit=this.handleSubmit.bind(this)
-        // this.handleDelete=this.handleDelete.bind(this)
+        this.handleDelete=this.handleDelete.bind(this)
         
     }
 
@@ -52,29 +52,17 @@ class List extends Component {
                                     <td style={border}>{item.route1}</td>
                                     <td style={border}>{item.route2}</td>
                                     <td style={border}>{item.time}</td>
-                                <td><a id="addMore" title="delete"><button value='delete' id='del' type='button'>delete</button></a></td>
+                                <td><button value='delete' id='del' onClick={this.handleDelete.bind(this,key)} type='button'>delete</button></td>
                                     
-                                    <td><a   class='remove'><span class='glyphicon glyphicon-remove'></span></a></td>
                                 </tr>
                             )
-                         })} </tbody>
+                         },this)} </tbody>
 
 
                     </table>
                     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
                     
-                    {/* <script>
-                        $(document).ready(function(){
-                             $("button").click(function(){
-                                var del = $(this).attr("id");
-                                    $(`#del${del}`).remove();
-                                    $(`#${del}`).remove();
-        
-                                 })
-                            });        
-                        });
-        
-                    </script> */}
+                   
                    
                 </form>
             </div>
@@ -84,31 +72,30 @@ class List extends Component {
         this.handleSubmit()
     }
 
-    // handleDelete(){
-       
-    // }
+   
     
-//    handleDelete(){
-//     axios({
-//         method: 'post',
-//         url: 'http://localhost:3001/places/delete',
-//         data: {
-//             from: this.state.from,
+   handleDelete(key){
+    axios({
+        method: 'post',
+        url: 'http://localhost:3001/places/delete',
+        data: {
+            from: this.state.data[key].from,
             
-//         },
-//         withCredentials: true
-//     })
-//     .then(() => {
-//         this.setState({
-//             from: '',
+        },
+        withCredentials: true
+    })
+    .then(() => {
+        this.setState({
+            from: '',
             
-//         })
-//         alert('details deleted')
-//     })
-//     .catch(error => {
-//         alert('add correct details')
-//     })
-//    }
+        })
+        alert('details deleted')
+        this.handleSubmit()
+    })
+    .catch(error => {
+        alert('add correct details')
+    })
+   }
     handleSubmit() {
         axios({
             method: 'get',

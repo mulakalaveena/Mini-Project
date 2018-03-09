@@ -80,22 +80,7 @@ class List extends Component {
         .catch(error => {
             alert('add correct details')
         })
-        // axios({
-        //     method: 'get',
-        //     url: 'http://localhost:3001/vehicles/list',
-            
-        //     withCredentials: true
-        // })
-        // .then((res) => {
-        //     this.setState({
-                
-        //         data:res.data
-                
-        //     })
-        // })
-        // .catch(error => {
-        //     alert('add correct details')
-        // })
+       
     }
     handleList(){
          axios({
