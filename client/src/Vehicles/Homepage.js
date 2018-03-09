@@ -2,8 +2,8 @@ import React, { Component } from 'react'
 import bootstrap from 'bootstrap';
 import Create from './Create'
 import Update from './Update'
-// import List from './List'
-// import Delete from './Delete'
+import List from './List'
+import Delete from './Delete'
 import axios from 'axios'
 import Admin from '../Admin/Homepage'
 
@@ -60,12 +60,18 @@ class Vehicle extends Component {
                 {this.state.adminHomepage ? adminHomepage : null}
                 {this.state.create ? <Create /> : null}
                 {this.state.update ? <Update /> : null}
-                {/* {this.state.list?<List/>:null} */}
-                {/* {this.state.delete ? <Delete /> : null} */}
+                {this.state.list?<List/>:null}
+                {this.state.delete ? <Delete /> : null}
                 {this.state.back ? <Admin /> : null}
               
             </div>
         )
+    }
+    handleList(){
+        this.setState({
+            adminHomepage:false,
+            list:true
+        })
     }
     handleCreate() {
         this.setState({
@@ -81,27 +87,7 @@ class Vehicle extends Component {
         })
     }
    
-    handleList() {
-        axios({
-            method: 'get',
-            url: 'http://localhost:3001/vehicles/list',
-            withCredentials: true
-        })
-            .then(places => {
-                this.setState({
-                    places: places.data,
-                    adminHomepage: false,
-                    create: false,
-                    update: false
-
-
-                })
-
-            })
-            .catch(error => {
-                alert('notes not found')
-            })
-    }
+   
     handleDelete() {
         this.setState({
             adminHomepage: false,

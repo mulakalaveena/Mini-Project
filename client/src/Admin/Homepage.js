@@ -67,19 +67,19 @@ class Admin extends Component {
                     <br/>
                     <button type='button' onClick={this.handleLogout}>logout</button>
                     <br/>
-                    <table style={border} >
-                        <thead style={border}>
-                            <tr style={border} >
-                                <th style={border} >model</th>
-                                <th style={border}>status</th>
+                    <table class="table table-striped" >
+                        <thead >
+                            <tr  >
+                                <th scope="col">model</th>
+                                <th scope="col">status</th>
                                 
                              </tr>
                         </thead>
-                        <tbody style={border}>{this.state.data.map(function(item,key){
+                        <tbody >{this.state.data.map(function(item,key){
                             return(
-                                <tr style={border} key={key}>                               
-                                    <td style={border}>{item.model}</td>
-                                    <td style={border}>{item.status}</td>
+                                <tr  key={key}>                               
+                                    <td >{item.model}</td>
+                                    <td >{item.status}</td>
                                     
                                 </tr>
                             )
@@ -88,19 +88,19 @@ class Admin extends Component {
 
                     </table>
                     <br/>
-                    <table style={border} >
-                        <thead style={border}>
-                            <tr style={border} >
-                                <th style={border} >username</th>
-                                <th style={border}>status</th>
+                    <table  class="table table-striped" >
+                        <thead >
+                            <tr  >
+                                <th scope="col">username</th>
+                                <th scope="col">status</th>
                                 
                              </tr>
                         </thead>
-                        <tbody style={border}>{this.state.ddata.map(function(item,key){
+                        <tbody >{this.state.ddata.map(function(item,key){
                             return(
-                                <tr style={border} key={key}>                               
-                                    <td style={border}>{item.username}</td>
-                                    <td style={border}>{item.status}</td>
+                                <tr  key={key}>                               
+                                    <td >{item.username}</td>
+                                    <td >{item.status}</td>
                                     
                                 </tr>
                             )
@@ -232,27 +232,7 @@ class Admin extends Component {
             delete: true
         })
     }
-    // handleLogout() {
-    //     axios({
-    //         method:'get',
-    //         url:'http://localhost:3001/user/logout',
-    //         withCredentials:true
-    //     })
-    //     .then(()=>{
-    //     this.setState({
-    //         logout: true,
-    //         adminHomepage: false,
-    //         create: false,
-    //         update: false,
-    //         list: false,
-    //         delete: false
-    //     })
-    //     alert('user logged out')
-    //  })
-    //  .catch(error=>(
-    //      alert('unable to logout')
-    //  ))
-    // }
+    
     handleClick(){
         this.setState({
             vehicle:true,

@@ -15,7 +15,7 @@ function create(req, res) {
 }
 
 function list(req, res) {
-    console.log('got near list')
+    console.log('got near vehicle list')
     models.vehicles.findAll({}).then(function (vehicle) {
         res.json(vehicle);
     })

@@ -1,11 +1,17 @@
 .App {
   text-align: center;
-  background-image: url('img1.png');
+  /* background-image: url('img1.png');
   background-repeat: no-repeat;
   background-position: right
- 
+  */
 }
-
+.App-header {
+  background-position: right;
+  background-image: url('img1.png');
+  background-repeat: no-repeat;
+  padding-right: initial
+  
+}
 
 .App-logo {
   animation: App-logo-spin infinite 20s linear;
@@ -16,6 +22,7 @@
   width: 100%;
   
 }
+
 
 .App-intro {
   font-size: large;

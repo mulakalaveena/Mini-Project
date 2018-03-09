@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import axios from 'axios';
 import bootstrap from 'bootstrap';
-import $ from 'jquery'
+//import $ from 'jquery'
 
 
 
@@ -63,7 +63,7 @@ class List extends Component {
                     </table>
                     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
                     
-                    <script>
+                    {/* <script>
                         $(document).ready(function(){
                              $("button").click(function(){
                                 var del = $(this).attr("id");
@@ -74,7 +74,7 @@ class List extends Component {
                             });        
                         });
         
-                    </script>
+                    </script> */}
                    
                 </form>
             </div>
