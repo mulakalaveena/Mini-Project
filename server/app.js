@@ -3,7 +3,6 @@ const express = require('express');
 const app = express();
 const passport = require('./passport/config.js')
 
-const session = require('express-session')
 
 const bodyparser =  require('body-parser')
 const register = require('./controller/register')

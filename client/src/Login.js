@@ -154,7 +154,7 @@ class Login extends Component {
                     })
                 }
                 
-                alert( res.data.role)
+                alert(` logged in as ${res.data.role}` )
             })
             .catch(error => {
                 alert('user not found')
