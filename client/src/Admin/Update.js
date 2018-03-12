@@ -29,12 +29,12 @@ class Update extends Component {
                 <header className="App-header">
                     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous" />
                     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-                    <p>Admin Homepage</p>
+                    <p>Update the places</p>
                 </header>
                 <form>
                     
                     <label>from:</label>
-                    <select value={this.state.from} onChange={this.handleFrom}  >
+                    <select class="custom-select"value={this.state.from} onChange={this.handleFrom}  >
                     <option value='select'>select a place</option>
                         <option value="Hyderabad">Hyderabad</option>
                         <option value="Nizamabad">Nizamabad</option>
@@ -44,7 +44,7 @@ class Update extends Component {
                     </select>
                     <br/>
                     <label>to:</label>
-                    <select value={this.state.to} onChange={this.handleTo}  >
+                    <select class="custom-select"value={this.state.to} onChange={this.handleTo}  >
                     <option value='select'>select a place</option>
                         <option value="Hyderabad">Hyderabad</option>
                         <option value="Nizamabad">Nizamabad</option>
@@ -54,7 +54,7 @@ class Update extends Component {
                     </select>
                     <br/>
                     <label>route1:</label>
-                    <select value={this.state.route1} onChange={this.handleRoute1}  >
+                    <select class="custom-select"value={this.state.route1} onChange={this.handleRoute1}  >
                     <option value='select'>select a place</option>
                         <option value="Hyderabad">Hyderabad</option>
                         <option value="Nizamabad">Nizamabad</option>
@@ -64,7 +64,7 @@ class Update extends Component {
                     </select>
                     <br/>
                     <label>route2:</label>
-                    <select value={this.state.route2} onChange={this.handleRoute2}  >
+                    <select class="custom-select"value={this.state.route2} onChange={this.handleRoute2}  >
                     <option value='select'>select a place</option>
                         <option value="Hyderabad">Hyderabad</option>
                         <option value="Nizamabad">Nizamabad</option>
@@ -73,10 +73,10 @@ class Update extends Component {
 
                     </select>
                     <br/>
-                    <button type="button" onClick={this.handleSubmit}>Submit</button>
+                    <button type="button" class="btn btn-outline-success"onClick={this.handleSubmit}>Submit</button>
                     <br/>
                     <br/>
-                    <button type='button 'onClick={this.handleBack}>Back</button>
+                    <button type='button ' class="btn btn-outline-info"onClick={this.handleBack}>Back</button>
                 </form>
             </div>
         )

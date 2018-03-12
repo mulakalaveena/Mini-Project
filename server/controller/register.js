@@ -5,11 +5,11 @@ const router = require('express').Router()
 function register(req,res,next){
     console.log('register')
    
-    models.drivers.findOne({
+    models.user.findOne({
         where:{username:req.body.username}
     })
     .then(user=>{
-        if(user){
+        if(!user){
             console.log(' exists')
             models.user.create({
                 username:req.body.username,

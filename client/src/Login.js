@@ -5,6 +5,7 @@ import Admin from './Admin/Homepage'
 import Manager from './Manager/Homepage'
 import Status from './Driver/Status'
 import User from './User.js'
+import Home from './Home'
 
 class Login extends Component {
     constructor(props) {
@@ -21,6 +22,7 @@ class Login extends Component {
         this.handleUsername = this.handleUsername.bind(this)
         this.handlePassword = this.handlePassword.bind(this)
         this.handleClick = this.handleClick.bind(this)
+        this.handleBack=this.handleBack.bind(this)
 
 
     }
@@ -31,19 +33,21 @@ class Login extends Component {
                     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous" />
                     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 
-                    <p>Login form</p>
+                    <h4>Login form</h4>
                 </header>
                 <form>
                     <label>username:</label>
                     <br />
-                    <input type='text' placeholder='username' onChange={this.handleUsername} />
+                    <input type='text'class="form-control"  placeholder='username' onChange={this.handleUsername} />
                     <br />
                     <label>password:</label>
                     <br />
-                    <input type='password' placeholder='password' onChange={this.handlePassword} />
+                    <input type='password'class="form-control"  placeholder='password' onChange={this.handlePassword} />
                     <br />
-                    <button type='button' onClick={this.handleClick}>login</button>
+                    <button type='button' class="btn btn-info" onClick={this.handleClick}>login</button>
                     <br />
+                    <br/>
+                    <button type='button'class="btn btn-success" onClick={this.handleBack}>Back</button>
                 </form>
             </div>
         );
@@ -91,6 +95,11 @@ class Login extends Component {
     handleUsername(event) {
         this.setState({
             username: event.target.value
+        })
+    }
+    handleBack(){
+        this.setState({
+            loginPage:false
         })
     }
     handlePassword(event) {

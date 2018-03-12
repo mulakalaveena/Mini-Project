@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import axios from 'axios';
 import bootstrap, { Collapse } from 'bootstrap';
-import App from '../App';
+import Home from '../Home';
 import Manager from './Homepage';
 
 class Create extends Component {
@@ -35,18 +35,17 @@ class Create extends Component {
 
     }
     render() {   
-        var border={border_collapse:'collapse',border:'1px solid black',align:'left'};
         var createPage = (
 
             <div className="App">
                 <header className="App-header">
                     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous" />
                     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-                    <p>Manager Homepage</p>
+                    <h4>Assigning page</h4>
                 </header>
                 <form>
                 <label>from:</label>
-                    <select value={this.state.from} onChange={this.handleFrom}  >
+                    <select class='custom-select' value={this.state.from} onChange={this.handleFrom}  >
                         <option value='select'>select a place</option>
                         <option value="Hyderabad">Hyderabad</option>
                         <option value="Nizamabad">Nizamabad</option>
@@ -56,7 +55,7 @@ class Create extends Component {
                     </select>
                     <br />
                     <label>to:</label>
-                    <select value={this.state.to} onChange={this.handleTo}  >
+                    <select class='custom-select' value={this.state.to} onChange={this.handleTo}  >
                         <option value='select'>select a place</option>
                         <option value="Hyderabad">Hyderabad</option>
                         <option value="Nizamabad">Nizamabad</option>
@@ -66,7 +65,7 @@ class Create extends Component {
                     </select>
                     <br />
                     <label>route1:</label>
-                    <select value={this.state.route1} onChange={this.handleRoute1}  >
+                    <select class='custom-select' value={this.state.route1} onChange={this.handleRoute1}  >
                     <option value='select'>select a place</option>
                         <option value="Hyderabad">Hyderabad</option>
                         <option value="Nizamabad">Nizamabad</option>
@@ -76,7 +75,7 @@ class Create extends Component {
                     </select>
                     <br />
                     <label>route2:</label>
-                    <select value={this.state.route2} onChange={this.handleRoute2}  >
+                    <select class='custom-select' value={this.state.route2} onChange={this.handleRoute2}  >
                     <option value='select'>select a place</option>
                         <option value="Hyderabad">Hyderabad</option>
                         <option value="Nizamabad">Nizamabad</option>
@@ -86,52 +85,52 @@ class Create extends Component {
                     </select>
                     <br />
                     <label>Time(hours):</label>
-                    <input id="number" value={this.state.time}onChange={this.handleTime}type="number"min="0"/>
+                    <input id="number" class='form-control'cvalue={this.state.time}onChange={this.handleTime}type="number"min="0"/>
                     <br/>
                     
                     <label>driver:</label>
-                    <input type='text' onChange={this.handleName} placeholder='drivers name'/>
+                    <input type='text' class='form-control'onChange={this.handleName} placeholder='drivers name'/>
                     <br/>
                     <label>vehicle:</label>
-                    <input type='text' onChange={this.handleModel} placeholder='vehicles name'/>
+                    <input type='text' class='form-control'onChange={this.handleModel} placeholder='vehicles name'/>
                     <br/>
-                    <button type="button" onClick={this.handleCreate}>assign</button>
+                    <button type="button" class='btn btn-success'onClick={this.handleCreate}>assign</button>
                     <br />
                     <br />
-                    <button type='button' onClick={this.handleBack}>Back</button>
-                    <table style={border}>
+                    <button type='button'class='btn btn-outline-info' onClick={this.handleBack}>Back</button>
+                    <table class='table'>
                         <thead>
-                            <tr style={border} >
-                                <th style={border}>name</th>
-                                <th style={border}>status</th>
+                            <tr  >
+                                <th scope='col' >name</th>
+                                <th scope='col'>status</th>
                             </tr>
                         </thead>
-                        <tbody style={border}>{this.state.data.map(function(item,key){
+                        <tbody >{this.state.data.map(function(item,key){
                             return(
-                                <tr style={border} key={key}>
+                                <tr  key={key}>
                                     
-                                    <td style={border}>{item.username}</td>
-                                    <td style={border}>{item.status}</td>
+                                    <td >{item.username}</td>
+                                    <td >{item.status}</td>
                                 </tr>
                             )
                          },this)} </tbody>
 
                     </table >
                     <br/>
-                    <table style={border} >
-                        <thead style={border}>
+                    <table class='table'>
+                        <thead >
                             <tr >
-                                <th>model</th>
-                                <th>status</th>
+                                <th scope='col'>model</th>
+                                <th scope='col'>status</th>
                             </tr>
                             
                         </thead>
-                        <tbody style={border}>{this.state.vdata.map(function(item,key){
+                        <tbody >{this.state.vdata.map(function(item,key){
                             return(
-                                <tr style={border} key={key}>
+                                <tr  key={key}>
                                    
-                                    <td style={border}>{item.model}</td>
-                                    <td style={border}>{item.status}</td>
+                                    <td >{item.model}</td>
+                                    <td >{item.status}</td>
                                 </tr>
                             )
                          },this)} </tbody>

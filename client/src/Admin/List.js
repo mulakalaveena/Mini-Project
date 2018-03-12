@@ -21,40 +21,39 @@ class List extends Component {
     }
 
     render() {
-        var border={border_collapse:'collapse',border:'1px solid black',align:'left'};
         var listpage= (
             <div className="App">
                 <header className="App-header">
                     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous" />
                     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
                     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-                    <p>Admin Homepage</p>
+                    <h4>List of places</h4>
                 </header>
                 <form>
                     
                     
-                    <table style={border} id='tb'>
-                        <thead style={border}>
-                            <tr style={border} >
-                                <th style={border}  >from</th>
-                                <th style={border}>to</th>
-                                <th style={border}>route1</th>
-                                <th style={border}>route2</th>
-                                <th style={border}>time(hrs)</th>
+                    <table  class='table'>
+                        <thead >
+                            <tr  >
+                                <th scope="col"  >from</th>
+                                <th scope="col" >to</th>
+                                <th scope="col">route1</th>
+                                <th scope="col">route2</th>
+                                <th scope="col">time(hrs)</th>
                                
                                 
 
                              </tr>
                         </thead>
-                        <tbody style={border}>{this.state.data.map(function(item,key){
+                        <tbody >{this.state.data.map(function(item,key){
                             return(
-                                <tr style={border} key={key}>                               
-                                    <td style={border}>{item.from}</td>
-                                    <td style={border}>{item.to}</td>
-                                    <td style={border}>{item.route1}</td>
-                                    <td style={border}>{item.route2}</td>
-                                    <td style={border}>{item.time}</td>
-                                <td><button value='delete' id='del' onClick={this.handleDelete.bind(this,key)} type='button'>delete</button></td>
+                                <tr  key={key}>                               
+                                    <td >{item.from}</td>
+                                    <td >{item.to}</td>
+                                    <td >{item.route1}</td>
+                                    <td >{item.route2}</td>
+                                    <td >{item.time}</td>
+                                <td><button value='delete' class="btn btn-danger" onClick={this.handleDelete.bind(this,key)} type='button'>delete</button></td>
                                     
                                 </tr>
                             )
@@ -62,7 +61,7 @@ class List extends Component {
 
 
                     </table>
-                    <button type='button' onClick={this.handleBack}>Back</button>
+                    <button type='button'class='btn btn-outline-info' onClick={this.handleBack}>Back</button>
                     
                    
                    
@@ -83,6 +82,7 @@ class List extends Component {
    
     
    handleDelete(key){
+
     axios({
         method: 'post',
         url: 'http://localhost:3001/places/delete',

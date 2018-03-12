@@ -10,7 +10,7 @@ class Status extends Component {
         super(props)
         this.state = {
             driver: '',
-            status:'select',
+            status:'',
             
         }
         
@@ -27,15 +27,15 @@ class Status extends Component {
                 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous" />
                 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 
-                <p>Admin Homepage</p>
+                <h4>Driver Status</h4>
             </header>
             <form>
             <label>name:</label>
-            <input type='text' placeholder='drivers name'onChange={this.handleChange}/>
+            <input class='form-control'type='text' placeholder='drivers name'onChange={this.handleChange}/>
             <br />
             
             <label>status:</label>
-            <select value={this.state.status} onChange={this.handleStatus}  >
+            <select class='custom-select'value={this.state.status} onChange={this.handleStatus}  >
             <option value='select'>select a value</option>
                 <option value="reached">reached</option>
                 <option value="not reached">not reached</option>
@@ -43,9 +43,9 @@ class Status extends Component {
             </select>
             <br />
             <br/>
-            <button type='button' onClick={this.handleClick}>Update</button>
+            <button class='btn btn-success'type='button' onClick={this.handleClick}>Update</button>
             <br/>
-            <button type='button' onClick={this.handleLogout}>logout</button>
+            <button class='btn btn-danger'type='button' onClick={this.handleLogout}>logout</button>
             </form>
             </div>
             

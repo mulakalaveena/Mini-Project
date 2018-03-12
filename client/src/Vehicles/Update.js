@@ -30,16 +30,14 @@ class Update extends Component {
                 </header>
                 <form>
                     <label>model:</label>
-                    <input type='text' placeholder='vehicle name' onChange={this.handleModel}/>
+                    <input type='text' class='form-control'placeholder='vehicle name' onChange={this.handleModel}/>
                     <br/>
                     <br/>
-                    <label>status:</label>
-                    <input type='text' placeholder='status' onChange={this.handleStatus}/> 
-                    <br/>
-                    <button type="button" onClick={this.handleUpdate}>update</button>
+                   
+                    <button type="button" class='btn btn-success'onClick={this.handleUpdate}>update</button>
                     <br />
                     <br />
-                    <button type='button' onClick={this.handleBack}>Back</button>
+                    <button type='button' class='btn btn-outline-info'onClick={this.handleBack}>Back</button>
 
                 </form>
 

@@ -4,7 +4,7 @@ import Create from './Create'
 import Update from './Update'
 import List from './List'
 import axios from 'axios'
-import App from '../App'
+import Home from '../Home'
 import Vehicle from '../Vehicles/Homepage'
 import Driver from '../Driver/Homepage'
 
@@ -43,7 +43,7 @@ class Admin extends Component {
                 <header className="App-header">
                     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous" />
                     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-                    <p>Admin Homepage</p>
+                    <h4>Admin Homepage</h4>
                 </header>
                 <div>
 
@@ -54,14 +54,9 @@ class Admin extends Component {
                     <button type="button" onClick={this.handleList} class="btn btn-success">List</button>
                     <br />
                     <br />
-                    <br />
-                    <button type='button' onClick={this.handleClick} >vehicle</button>
-                    <br />
-                    <br />
-                    <button type='button' onClick={this.handleDriver}>driver</button>
-                    <br/>
-                    <br/>
-                    <button type='button' onClick={this.handleLogout}>logout</button>
+                    <button type='button' class="btn btn-info"onClick={this.handleClick} >vehicle</button>
+                    <button type='button' class="btn btn-dark"onClick={this.handleDriver}>driver</button>
+                    <button type='button' class="btn btn-danger"onClick={this.handleLogout}>logout</button>
                     <br/>
                     <table class="table table-striped" >
                         <thead >
