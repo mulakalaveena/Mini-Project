@@ -31,7 +31,8 @@ function del(req, res) {
     console.log('got near delete')
     models.final.destroy({
         where: {
-            from: req.body.from
+            from: req.body.from,
+            to:req.body.to
         }
     }).then(function (data) {
         res.json(data);

@@ -46,8 +46,8 @@ function update(req, res) {
             drivers.update({
                 status:req.body.status
                 
-            }).then(function (name) {
-                res.json(name);
+            }).then(function (updatedData) {
+                res.json(data.concat(updatedData));
             });
         }
     });

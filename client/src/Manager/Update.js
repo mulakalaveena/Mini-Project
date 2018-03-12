@@ -166,7 +166,6 @@ class Update extends Component {
             withCredentials:true
         })
         .then(res=>{
-            
             this.setState({
                 data:res.data,
                 list:false

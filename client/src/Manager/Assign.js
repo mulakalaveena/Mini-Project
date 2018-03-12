@@ -85,7 +85,7 @@ class Create extends Component {
                     </select>
                     <br />
                     <label>Time(hours):</label>
-                    <input id="number" class='form-control'cvalue={this.state.time}onChange={this.handleTime}type="number"min="0"/>
+                    <input id="number" class='form-control'value={this.state.time}onChange={this.handleTime}type="number"min="0"/>
                     <br/>
                     
                     <label>driver:</label>
@@ -270,7 +270,7 @@ class Create extends Component {
         })
         .then((res) => {
             this.setState({
-                data:res.data,
+                data:res.data.data,
                 driver: '',
                 status: ''
                 

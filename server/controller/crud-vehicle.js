@@ -46,8 +46,8 @@ function update(req, res) {
             vehicles.update({
                 status:req.body.status
                 
-            }).then(function (model) {
-                res.json(model);
+            }).then(function (updatedData) {
+                res.json(modal.concat(updatedData));
             });
         }
     });
