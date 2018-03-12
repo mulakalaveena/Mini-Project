@@ -30,8 +30,6 @@ class List extends Component {
                     <h4>List of places</h4>
                 </header>
                 <form>
-                    
-                    
                     <table  class='table'>
                         <thead >
                             <tr  >

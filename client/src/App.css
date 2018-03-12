@@ -4,7 +4,8 @@
   
 }
 .App-header {
-  color: maroon  
+  color: maroon ;
+  padding-top: 5%;
  
 }
 .App-button{
@@ -18,7 +19,9 @@
   background-size: cover;
   position: relative;
   text-align:center;
-  text-decoration-style: dashed
+  text-decoration-style: dashed;
+  background-color: snow;
+
 }
 .App-text {
   text-align: center;
@@ -28,19 +31,21 @@
   transform: translate(-50%, -50%);
   color: white;
 }
-/* .App-button{
-  align-self: center;
-  object-position: bottom;
-  border: none;
-  outline: 0;
-  display: inline-block;
-  padding: 10px 25px;
-  color: black;
-  background-color: #ddd;
-  text-align: center;
+.App table{
+  width: 50%;
+  position: relative;
+  margin: auto;
+  padding: 10px;
   
-  cursor: pointer;
-} */
+  
+}
+.App-form-group{
+  width: 40%;
+  left:50%;
+  margin: auto;
+  padding: 10px;
+  background-color: lavenderblush
+}
 
 .App-logo {
   animation: App-logo-spin infinite 20s linear;

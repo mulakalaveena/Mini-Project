@@ -35,7 +35,7 @@ class Login extends Component {
 
                     <h4>Login form</h4>
                 </header>
-                <form>
+                <form class='App-form-group'>
                     <label>username:</label>
                     <br />
                     <input type='text'class="form-control"  placeholder='username' onChange={this.handleUsername} />
@@ -59,6 +59,7 @@ class Login extends Component {
                 {this.state.managerPage?<Manager/>:null}
                 {this.state.driverPage?<Status/>:null}
                 {this.state.userPage?<User/>:null}
+                {this.state.back?<Home/>:null}
                 
             </div>
         )
@@ -99,7 +100,8 @@ class Login extends Component {
     }
     handleBack(){
         this.setState({
-            loginPage:false
+            loginPage:false,
+            back:true
         })
     }
     handlePassword(event) {

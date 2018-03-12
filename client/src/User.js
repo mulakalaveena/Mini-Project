@@ -35,7 +35,8 @@ class User extends Component{
                     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
                     <h4>User </h4>
                 </header>
-            <form>
+            
+            <form class='App-form-group'>
             <label>from:</label>
             <select class='custom-select'value={this.state.from} onChange={this.handleFrom}  >
             <option value='select'>select a place</option>
@@ -58,6 +59,7 @@ class User extends Component{
             <br/>
             <br/>
             <button type='button'class='btn btn-primary' onClick={this.handleClick}>Search</button>
+            <br/>
             <button type='button' class='btn btn-danger' onClick={this.handleLogout}>Logout</button>
             
             </form>
@@ -65,6 +67,12 @@ class User extends Component{
             </div>
         );
         var list=(
+            <div className="App">
+                <header className="App-header">
+                    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous" />
+                    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+                    <h4>List </h4>
+                </header>
             <div>
             <table class='table' >
                         <thead >
@@ -99,6 +107,7 @@ class User extends Component{
                     </table>
                     
                     <button type='button'class='btn btn-danger' onClick={this.handleLogout}>Logout</button>
+                </div>
                 </div>
                     
         )

@@ -29,7 +29,7 @@ class Status extends Component {
 
                 <h4>Driver Status</h4>
             </header>
-            <form>
+            <form class='App-form-group'>
             <label>name:</label>
             <input class='form-control'type='text' placeholder='drivers name'onChange={this.handleChange}/>
             <br />
