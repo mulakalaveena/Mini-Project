@@ -85,7 +85,7 @@ class Create extends Component {
                     status: '',
                                
                 })
-                alert('details added')
+                alert('driver added')
             })
             .catch(error => {
                 alert('add correct details')

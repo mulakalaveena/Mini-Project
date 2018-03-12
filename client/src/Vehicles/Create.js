@@ -82,7 +82,7 @@ class Create extends Component {
                     status: '',
                                
                 })
-                alert('details added')
+                alert('vehicle added')
             })
             .catch(error => {
                 alert('add correct details')

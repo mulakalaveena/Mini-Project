@@ -260,7 +260,7 @@ class Update extends Component {
                                 
             })
             this.handleList()
-            alert('details added')
+            //alert('details added')
         })
         .catch(error => {
             alert('add correct details')

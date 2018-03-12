@@ -100,7 +100,7 @@ class Status extends Component {
                     status:'select'
                                     
                 })
-                alert('details updated')
+                alert('status updated')
             })
             .catch(error => {
                 alert('add correct details')

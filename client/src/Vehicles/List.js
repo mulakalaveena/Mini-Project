@@ -81,7 +81,7 @@ class List extends Component {
                 from: '',
                 
             })
-            alert('details deleted')
+            //alert('details deleted')
             this.handleList()
         })
         .catch(error => {
