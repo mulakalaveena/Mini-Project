@@ -18,7 +18,7 @@ function list(req, res) {
     console.log('got near vehicle list')
     models.vehicles.findAll({}).then(function (vehicle) {
         res.json(vehicle);
-        console.log(vehicle)
+        
     })
 }
 

@@ -10,7 +10,7 @@ function register(req,res,next){
     })
     .then(user=>{
         if(!user){
-            console.log(' exists')
+            console.log(' does not exists')
             models.user.create({
                 username:req.body.username,
                 password:req.body.password,

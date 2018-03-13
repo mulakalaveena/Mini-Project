@@ -253,7 +253,7 @@ class Create extends Component {
                 driverstatus:true
                                 
             })
-            //alert('details added')
+            alert('details added')
         })
         .catch(error => {
             alert('add correct details to assign')
@@ -303,6 +303,28 @@ class Create extends Component {
         })
         .catch(error => {
             alert('add correct vehicle details')
+        }),
+        axios({
+            method:'post',
+            url:'http://localhost:3001/places/update',
+            data:{
+                from:this.state.from,
+                to:this.state.to,
+                route1:this.state.route1,
+                route2:this.state.route2
+            },
+            withCredentials:true
+        })
+        .then((res)=>{
+            this.setState({
+                from: '',
+                to: '',
+                route1: '',
+                route2: ''
+            })
+        })
+        .catch(error=>{
+            console.log('error')
         })
     }
     

@@ -35,7 +35,7 @@ class Manager extends Component {
                     <h4>Manager Homepage</h4>
                 </header>
                 <form>
-                    <button type="button" onClick={this.handleUpdate} class="btn btn-secondary">Update</button>
+                    {/* <button type="button" onClick={this.handleUpdate} class="btn btn-secondary">Update</button> */}
                     <button type="button" onClick={this.handleList} class="btn btn-success">List</button>
                     <br/>
                     <br/>

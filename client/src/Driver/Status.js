@@ -9,7 +9,7 @@ class Status extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            driver: '',
+            // driver: '',
             status:'',
             startingtime:0,
             reachedtime:0
@@ -24,7 +24,10 @@ class Status extends Component {
         this.handleReachtime=this.handleReachtime.bind(this)
 
     }
-    render() {   
+    
+    render() {
+        const driver=this.props.driver;   
+
         return(
             <div className="App">
             <header className="App-header">
@@ -35,7 +38,7 @@ class Status extends Component {
             </header>
             <form class='App-form-group'>
             <label>name:</label>
-            <input class='form-control'type='text' placeholder='drivers name'onChange={this.handleChange}/>
+            <input class='form-control'type='text' value={driver} onChange={this.handleChange}/>
             <br />
             
             <label>status:</label>
@@ -82,9 +85,9 @@ class Status extends Component {
         })
     }
     handleChange(event) {
-        this.setState({
-            driver: event.target.value
-        })
+       
+            this.props.driverChange(event.target.value)
+        
     }
     handleLogout(){
         axios({
@@ -108,7 +111,7 @@ class Status extends Component {
             data: {
                 
                 status:this.state.status,
-                driver:this.state.driver,
+                driver:this.props.driver,
                 startingtime:this.state.startingtime,
                 reachedtime:this.state.reachedtime
                 

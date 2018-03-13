@@ -40,13 +40,14 @@ function update(req, res) {
     console.log('got near update')
     models.place.findOne({
         where: {
-            from: req.body.from
+            from: req.body.from,
+            to:req.body.to
         }
     })
     .then(function (place) {
         if (place) {
             place.update({
-                to: req.body.to,
+                
                 route1:req.body.route1,
                 route2:req.body.route2,
                 time: parseInt(req.body.time)

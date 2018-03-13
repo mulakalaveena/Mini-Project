@@ -18,7 +18,6 @@ function list(req, res) {
     console.log('got near driver list')
     models.drivers.findAll({}).then(function (driver) {
         res.json(driver);
-        console.log(driver)
     })
 }
 

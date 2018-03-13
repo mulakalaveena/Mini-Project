@@ -57,7 +57,7 @@ class Login extends Component {
                 {this.state.loginPage ? loginPage : null}
                 {this.state.adminPage?<Admin/>:null}
                 {this.state.managerPage?<Manager/>:null}
-                {this.state.driverPage?<Status/>:null}
+                {this.state.driverPage?<Status driver={this.state.username}/>:null}
                 {this.state.userPage?<User/>:null}
                 {this.state.back?<Home/>:null}
                 
