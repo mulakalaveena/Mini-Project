@@ -87,8 +87,6 @@ class Update extends Component {
                     <label>Time(hours):</label>
                     <input class='form-control'id="number" value={this.state.time}onChange={this.handleTime}type="number"min="0"/>
                     <br/>
-                    
-                    <br />
                     <label>driver:</label>
                     <input class='form-control'type='text' onChange={this.handleName} placeholder='drivers name'/>
                     <br/>

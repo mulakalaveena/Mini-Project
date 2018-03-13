@@ -15,13 +15,15 @@ class Manager extends Component {
             managerHomepage: true,
             assign:false,
             update:false,
-            list:false
+            list:false,
+            data:[]
          
         }
         this.handleUpdate=this.handleUpdate.bind(this)
         this.handleList=this.handleList.bind(this)
         this.handleLogout=this.handleLogout.bind(this)
         this.handleAssign=this.handleAssign.bind(this)
+        this.handlePlaces=this.handlePlaces.bind(this)
     }
     render() {
         var managerHomepage = (
@@ -41,7 +43,34 @@ class Manager extends Component {
                     <br/>
                     <br/>
                     <button type="button" onClick={this.handleLogout} class='btn btn-danger'>Logout</button>
+                    <br/>
+                    <table  class='table'>
+                        <thead >
+                            <tr  >
+                                <th scope="col"  >from</th>
+                                <th scope="col" >to</th>
+                                <th scope="col">route1</th>
+                                <th scope="col">route2</th>
+                                <th scope="col">time(hrs)</th>
+                               
+                                
+
+                             </tr>
+                        </thead>
+                        <tbody >{this.state.data.map(function(item,key){
+                            return(
+                                <tr  key={key}>                               
+                                    <td >{item.from}</td>
+                                    <td >{item.to}</td>
+                                    <td >{item.route1}</td>
+                                    <td >{item.route2}</td>
+                                    <td >{item.time}</td>
+                                </tr>
+                            )
+                        })}  </tbody> 
+                        </table>                           
                 </form>
+                
             </div>
         );
         return(
@@ -96,7 +125,27 @@ class Manager extends Component {
             assign:true
         })
     }
-   
+    componentWillMount(){
+        this.handlePlaces()
+    }
+    handlePlaces(){
+        axios({
+            method: 'get',
+            url: 'http://localhost:3001/places/list',
+            
+            withCredentials: true
+        })
+        .then((res) => {
+            this.setState({
+                
+                data:res.data
+                
+            })
+        })
+        .catch(error => {
+            alert('add correct details')
+        })
+    }
 
 }
 

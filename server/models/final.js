@@ -8,7 +8,9 @@ module.exports = (sequelize, DataTypes) => {
     time: DataTypes.INTEGER,
     driver: DataTypes.STRING,
     vehicle: DataTypes.STRING,
-    status: DataTypes.STRING
+    status: DataTypes.STRING,
+    startingtime:DataTypes.TIME,
+    reachedtime:DataTypes.TIME
   }, {
     classMethods: {
       associate: function(models) {

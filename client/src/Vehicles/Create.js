@@ -33,7 +33,11 @@ class Create extends Component {
                     <br/>
                     <br/>
                     <label>status:</label>
-                    <input type='text' class='form-control'placeholder='status' onChange={this.handleStatus}/> 
+                    <select  class="custom-select"value={this.state.status} onChange={this.handleStatus}  >
+                    <option value='select'>status</option>
+                        <option value="not assigned">not assigned</option>
+
+                    </select>
                     <br/>
                     <button type="button"class='btn btn-primary' onClick={this.handleCreate}>Create</button>
                     <br />

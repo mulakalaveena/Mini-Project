@@ -276,7 +276,7 @@ class Create extends Component {
                 
             })
             this.handleList()
-            //alert('details updated')
+            alert('assigned')
         })
         .catch(error => {
             alert('add correct driver details')

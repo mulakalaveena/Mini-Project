@@ -60,6 +60,12 @@ module.exports = {
       status: {
         type: Sequelize.STRING
       },
+      startingtime:{
+        type: Sequelize.DATE
+      },
+      reachedtime:{
+        type: Sequelize.DATE
+      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE

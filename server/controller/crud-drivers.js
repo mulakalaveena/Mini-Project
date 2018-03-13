@@ -44,7 +44,9 @@ function update(req, res) {
     .then(function (drivers) {
         if (drivers) {
             drivers.update({
-                status:req.body.status
+                status:req.body.status,
+                // startingtime:req.body.startingtime,
+                // reachedtime:req.body.reachedtime
                 
             }).then(function (updatedData) {
                 res.json(data.concat(updatedData));

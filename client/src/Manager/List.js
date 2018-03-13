@@ -40,6 +40,8 @@ class List extends Component {
                                 <th scope='col' >driver</th>
                                 <th scope='col' >vehicle</th>
                                 <th scope='col' >status</th>
+                                <th scope='col' >startingtime</th>
+                                <th scope='col' >reachedtime</th>
                             </tr>
                         </thead>
                         <tbody >{this.state.data.map(function (item, key) {
@@ -53,6 +55,8 @@ class List extends Component {
                                     <td >{item.driver}</td>
                                     <td >{item.vehicle}</td>
                                     <td >{item.status}</td>
+                                    <td >{item.startingtime}</td>
+                                    <td >{item.reachedtime}</td>
 
                                     <td><button value='delete' class='btn btn-danger' data-toggle="modal" data-target="#exampleModal"  type='button'>delete</button></td>
                                     <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">

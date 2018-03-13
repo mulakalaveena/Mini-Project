@@ -11,6 +11,8 @@ class Status extends Component {
         this.state = {
             driver: '',
             status:'',
+            startingtime:0,
+            reachedtime:0
             
         }
         
@@ -18,6 +20,8 @@ class Status extends Component {
         this.handleStatus = this.handleStatus.bind(this)
         this.handleClick=this.handleClick.bind(this)
         this.handleLogout=this.handleLogout.bind(this)
+        this.handleStarttime=this.handleStarttime.bind(this)
+        this.handleReachtime=this.handleReachtime.bind(this)
 
     }
     render() {   
@@ -42,8 +46,14 @@ class Status extends Component {
                 <option value="on the way">on the way</option>
             </select>
             <br />
+            <label>startingtime:</label>
+            <input type='time' onChange={this.handleStarttime}/>
+            <br/>
+            <label>reachedtime:</label>
+            <input type='time' onChange={this.handleReachtime}/>
             <br/>
             <button class='btn btn-success'type='button' onClick={this.handleClick}>Update</button>
+            <br/>
             <br/>
             <button class='btn btn-danger'type='button' onClick={this.handleLogout}>logout</button>
             </form>
@@ -54,7 +64,16 @@ class Status extends Component {
         
           
     }
-    
+    handleStarttime(event){
+        this.setState({
+            startingtime:event.target.value
+        })
+    }
+    handleReachtime(event){
+        this.setState({
+            reachedtime:event.target.value
+        })
+    }
     
 
     handleStatus(event) {
@@ -90,6 +109,8 @@ class Status extends Component {
                 
                 status:this.state.status,
                 driver:this.state.driver,
+                startingtime:this.state.startingtime,
+                reachedtime:this.state.reachedtime
                 
             },
             withCredentials: true
@@ -97,7 +118,9 @@ class Status extends Component {
             .then((res) => {
                 this.setState({
                     driver:'',
-                    status:'select'
+                    status:'select',
+                    stratingtime:0,
+                    reachedtime:0
                                     
                 })
                 alert('status updated')

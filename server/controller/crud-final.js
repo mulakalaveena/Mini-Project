@@ -50,7 +50,9 @@ function update(req, res) {
     .then(function (final) {
         if (final) {
             final.update({
-                status:req.body.status
+                status:req.body.status,
+                startingtime:req.body.startingtime,
+                reachedtime:req.body.reachedtime
             }).then(function (data) {
                 res.send(data);
             });

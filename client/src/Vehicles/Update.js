@@ -33,7 +33,13 @@ class Update extends Component {
                     <input type='text' class='form-control'placeholder='vehicle name' onChange={this.handleModel}/>
                     <br/>
                     <br/>
-                   
+                    <label>status:</label>
+                    <select  class="custom-select"value={this.state.status} onChange={this.handleStatus}  >
+                    <option value='select'>status</option>
+                        <option value="not assigned">not assigned</option>
+                        <option value="assigned"> assigned</option>
+
+                    </select>
                     <button type="button" class='btn btn-success'onClick={this.handleUpdate}>update</button>
                     <br />
                     <br />
