@@ -15,6 +15,7 @@ class List extends Component {
         this.handleList = this.handleList.bind(this)
         this.handleBack = this.handleBack.bind(this)
         this.handleDelete= this.handleDelete.bind(this)
+        
 
     }
     render() {

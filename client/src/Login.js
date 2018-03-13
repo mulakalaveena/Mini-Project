@@ -154,7 +154,7 @@ class Login extends Component {
                     })
                 }
                 
-                alert(` logged in as ${res.data.role}` )
+                alert(` hello!  ${this.state.username}, you are logged in as ${res.data.role} ` )
             })
             .catch(error => {
                 alert('user not found')
